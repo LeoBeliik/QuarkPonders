@@ -1,0 +1,63 @@
+{
+  "category": "AUTOMATION",
+  "quark_ponders.ponder.minecraft_chain.header": "Chains Connect Blocks",
+  "quark_ponders.ponder.minecraft_chain.text_1": "Chains can now connect blocks together when a piston moves them",
+  "quark_ponders.ponder.minecraft_chain.text_2": "As you can see, the chain block itself doesn't have to be moved by the piston, and will attach indirectly to other moved blocks.",
+  "quark_ponders.ponder.minecraft_chain.text_3": "Chains will only connect to blocks if they do so visually.",
+
+  "quark_ponders.ponder.quark_chute.header": "The Chute",
+  "quark_ponders.ponder.quark_chute.text_1": "The Chute is a new automation block.\nThis is NOT a hopper!",
+  "quark_ponders.ponder.quark_chute.text_2": "Items can be inserted into it via automation (Hopper, Dropper, etc)",
+  "quark_ponders.ponder.quark_chute.text_3": "Any items inserted are instantly dropped under it, always precisely in the center.",
+  "quark_ponders.ponder.quark_chute.text_4": "The Chute can be disabled with a redstone signal..",
+  "quark_ponders.ponder.quark_chute.text_5": "Placing a block under it disables it too.",
+  "quark_ponders.ponder.quark_chute.text_6": "The Chute can drop items through hollow logs.\n(Any block with a hole in the middle)",
+
+  "quark_ponders.ponder.minecraft_dispenser.header": "Dispensers Place Blocks",
+  "quark_ponders.ponder.minecraft_dispenser.text_1": "Dispensers are allowed to place blocks in the world.",
+  "quark_ponders.ponder.minecraft_dispenser.text_2": "Any blocks that already had a placement behaviour, like TNT, are ignored.",
+  "quark_ponders.ponder.minecraft_dispenser.text_3": "The blocks are rotated so they're placed forward from the dispenser.",
+  "quark_ponders.ponder.minecraft_dispenser.text_4": "Note that crops such as Wheat Seeds or Potatoes also count.",
+
+  "quark_ponders.ponder.quark_ender_watcher.header": "Ender Watcher",
+  "quark_ponders.ponder.quark_ender_watcher.text_1": "The Ender Watcher is a new redstone input block.",
+  "quark_ponders.ponder.quark_ender_watcher.text_2": "It emits a redstone signal if a player is looking directly at it.",
+  "quark_ponders.ponder.quark_ender_watcher.text_3": "(It only works with players!)",
+  "quark_ponders.ponder.quark_ender_watcher.text_4": "The signal is higher the closer to the center of the block the player is looking.",
+
+  "quark_ponders.ponder.quark_feeding_trough.header": "Feeding Trough",
+  "quark_ponders.ponder.quark_feeding_trough.text_1": "The Feeding Trough is a new block that can hold animal food in it.",
+  "quark_ponders.ponder.quark_feeding_trough.text_2": "While holding the correct food, it will attract and breed animals from %s blocks around it.",
+  "quark_ponders.ponder.quark_feeding_trough.text_3": "There's a chance the animal will need more than one bit of food to get in love mode.",
+  "quark_ponders.ponder.quark_feeding_trough.text_4": "If there's more than %s animals in a %d block radius, the animals will eat, but never enter love mode.",
+
+  "quark_ponders.ponder.quark_gravisand.header": "Gravisand",
+  "quark_ponders.ponder.quark_gravisand.text_1": "Gravisand is a new sand variant.\nIt will not fall unless primed with redstone.",
+  "quark_ponders.ponder.quark_gravisand.text_2": "However, if gravisand receives a signal, and can not fall, it'll instead float up.",
+  "quark_ponders.ponder.quark_gravisand.text_3": "Gravisand will propagate the signal to any adjacent gravisand blocks, causing them to fall or float as well.",
+  "quark_ponders.ponder.quark_gravisand.text_4": "Gravisand always outputs a comparator signal of 15.",
+
+  "quark_ponders.ponder.quark_iron_rod.header": "Iron Rod",
+  "quark_ponders.ponder.quark_iron_rod.text_1": "Pistons pushing an Iron Rod will have it work as a drill of sorts.",
+  "quark_ponders.ponder.quark_iron_rod.text_2": "An Iron Rod will break any blocks in front of it.",
+  "quark_ponders.ponder.quark_iron_rod.text_3": "Iron Rods will only break blocks that pistons can push.",
+
+  "quark_ponders.ponder.quark_metal_buttons.header": "Metal Buttons.",
+  "quark_ponders.ponder.quark_metal_buttons.text_1": "Gold and Iron buttons draw influence from Weighted Pressure Plates.",
+  "quark_ponders.ponder.quark_metal_buttons.text_2": "Gold Buttons emit a very short pulse.\n(2 redstone ticks)",
+  "quark_ponders.ponder.quark_metal_buttons.text_3": "Iron Buttons emit a very long pulse.\n(5 seconds)",
+
+  "quark_ponders.ponder.quark_obsidian_pressure_plate.header": "Obsidian Pressure Plate",
+  "quark_ponders.ponder.quark_obsidian_pressure_plate.text_1": "Pressure Plates made with obsidian will only trigger when Players walk over them.",
+  "quark_ponders.ponder.quark_obsidian_pressure_plate.text_2": "(Yes this is a player).",
+
+  "quark_ponders.ponder.quark_piston_move_te.header": "Pistons Move Tile Entities",
+  "quark_ponders.ponder.quark_piston_move_te.text_1": "Pistons are allowed to move Tile Entities.\n(Blocks with extra data attached, like Chests or Furnaces)",
+  "quark_ponders.ponder.quark_piston_move_te.text_2": "Attempting to move a block to an invalid position will cause it to break and drop its contents",
+  "quark_ponders.ponder.quark_piston_move_te.text_3": "For a block that pistons can't move, now that furnaces can't be used, look into Sturdy Stone in the Building category.",
+  "quark_ponders.ponder.quark_piston_move_te.text_4": "Note that some blocks such as Monster Spawners can't be moved this way, so you don't go and break the game!",
+
+  "quark_ponders.ponder.quark_redstone_randomizer.header": "Redstone Randomizer",
+  "quark_ponders.ponder.quark_redstone_randomizer.text_1": "The Randomizer is a new redstone component.",
+  "quark_ponders.ponder.quark_redstone_randomizer.text_2": "When given a redstone signal from the back, it'll randomly enable either the left or right output."
+}
