@@ -49,7 +49,6 @@
 
   "quark_ponders.ponder.quark_obsidian_pressure_plate.header": "Obsidian Pressure Plate",
   "quark_ponders.ponder.quark_obsidian_pressure_plate.text_1": "Pressure Plates made with obsidian will only trigger when Players walk over them.",
-  "quark_ponders.ponder.quark_obsidian_pressure_plate.text_2": "(Yes this is a player).",
 
   "quark_ponders.ponder.quark_piston_move_te.header": "Pistons Move Tile Entities",
   "quark_ponders.ponder.quark_piston_move_te.text_1": "Pistons are allowed to move Tile Entities.\n(Blocks with extra data attached, like Chests or Furnaces)",
@@ -59,5 +58,66 @@
 
   "quark_ponders.ponder.quark_redstone_randomizer.header": "Redstone Randomizer",
   "quark_ponders.ponder.quark_redstone_randomizer.text_1": "The Randomizer is a new redstone component.",
-  "quark_ponders.ponder.quark_redstone_randomizer.text_2": "When given a redstone signal from the back, it'll randomly enable either the left or right output."
+  "quark_ponders.ponder.quark_redstone_randomizer.text_2": "When given a redstone signal from the back, it'll randomly enable either the left or right output.",
+
+  "category": "BUILDING",
+  "quark_ponders.ponder.quark_glass_item_frame.header": "Glass Item Frames",
+  "quark_ponders.ponder.quark_glass_item_frame.text_1": "Glass Item Frames work like normal item frames but they hide when you place an item on them.",
+  "quark_ponders.ponder.quark_glass_item_frame.text_2": "If you put a banner inside a Glass Item Frame, it'll sit flat with the wall with the pattern that's in it.",
+  "quark_ponders.ponder.quark_glass_item_frame.text_3": "Glass Item Frames can attach to the front of a Sign that's placed on the floor.",
+  "quark_ponders.ponder.quark_glass_item_frame.text_4": "This will make the item show flush with the sign.",
+  "quark_ponders.ponder.quark_glass_item_frame.text_5": "Glass Item Frames can be right clicked through to open chests or other inventories.",
+  "quark_ponders.ponder.quark_glass_item_frame.text_6": "When a map is placed in a Glass Item Frame, it will update in real time. Perfect for spies!",
+
+  "quark_ponders.ponder.quark_grate.header": "Iron Grate",
+  "quark_ponders.ponder.quark_grate.text_1": "The Iron Grate a new block that lets items fall through, but not mobs.",
+  "quark_ponders.ponder.quark_grate.text_2": "Additionally, farm mobs won't try to walk over them.",
+  "quark_ponders.ponder.quark_grate.text_3": "Farm mobs on a leash are not affected!",
+  "quark_ponders.ponder.quark_grate.text_4": "The Iron Grate can be waterlogged, items will float through it.",
+  "quark_ponders.ponder.quark_grate.text_5": "It can also be lavalogged!",
+
+  "quark_ponders.ponder.quark_rope.header": "Rope",
+  "quark_ponders.ponder.quark_rope.text_1": "The Rope can be placed on the bottom face of a block, by players and dispensers.",
+  "quark_ponders.ponder.quark_rope.text_2": "You can also extend it down by right clicking the rope block with more rope or dispenser.",
+  "quark_ponders.ponder.quark_rope.text_3": "Right clicking with an empty hand or a non rope item will pull the rope up.",
+  "quark_ponders.ponder.quark_rope.text_4": "You can't do it with dispensers tho.",
+  "quark_ponders.ponder.quark_rope.text_5": "As you can see, ropes can pull up and push down (some) blocks at the end of them.",
+  "quark_ponders.ponder.quark_rope.text_6": "Ropes also work as ladders!",
+
+  "category": "TOOLS",
+  "quark_ponders.ponder.quark_skull_spike.header": "Skull Pikes",
+  "quark_ponders.ponder.quark_skull_spike.text_1": "Setting a Skeleton Skull, Zombie Head, or Creeper Head over a fence, will create a skull pike.",
+  "quark_ponders.ponder.quark_skull_spike.text_2": "Nearby monsters in a %s block range and with line of sight will notice it, and run away in cowardice.",
+  "quark_ponders.ponder.quark_skull_spike.text_3": "Note that Wither Skulls and Dragon head don't work for this.",
+  "quark_ponders.ponder.quark_skull_spike.text_4": "Bosses and raiders are slightly more astute, and won't fall for this trickery.",
+  "quark_ponders.ponder.quark_skull_spike.text_5": "Lastly, mobs focused on the player won't fear the spikes.",
+
+  "category": "TWEAKS",
+
+  "quark_ponders.ponder.quark_enhanced_ladders.header": "Enhanced Ladders",
+  "quark_ponders.ponder.quark_enhanced_ladders.text_1": "Right clicking a ladder with another one will place it, allowing you to drop ladders down without risking falling to your death.",
+  "quark_ponders.ponder.quark_enhanced_ladders.text_2": "As long as the first ladder is supported, the ones below can freestand.",
+  "quark_ponders.ponder.quark_enhanced_ladders.text_3": "When on a ladder, looking down will make you slide down the ladder very quickly.",
+
+  "quark_ponders.ponder.quark_scaffolding_substitution.header": "Scaffolding Substitution",
+  "quark_ponders.ponder.quark_scaffolding_substitution.text_1": "Right clicking on a Scaffold with a block will attempt to place the block at the end of the Scaffold chain.",
+  "quark_ponders.ponder.quark_scaffolding_substitution.text_2": "By default it'll turn direction once, so it can build blocks horizontally if you extend scaffolds that way.",
+  "quark_ponders.ponder.quark_scaffolding_substitution.text_3": "If you wish to use the default behaviour of placing blocks on the scaffold, you can still do it with shift-right click.",
+
+  "quark_ponders.ponder.quark_slimes_to_magma_cubes.header": "Slimes to Magma Cubes",
+  "quark_ponders.ponder.quark_slimes_to_magma_cubes.text_1": "When a large slime dies on magma blocks, the slimes spawned will be turned into magma cubes.",
+
+  "category": "ODDITIES",
+
+  "quark_ponders.ponder.quark_pipe.header": "Copper Pipes",
+  "quark_ponders.ponder.quark_pipe.text_1": "Copper Pipes can transport items from point A to point B.",
+  "quark_ponders.ponder.quark_pipe.text_2": "To get items into a pipe simply use a Hopper, Dropper, or any other insertion means you may have handy.",
+  "quark_ponders.ponder.quark_pipe.text_3": "At an intersection, Items will move forward if possible.",
+  "quark_ponders.ponder.quark_pipe.text_4": "If not, items will try to randomly flow left or right if possible.",
+  "quark_ponders.ponder.quark_pipe.text_5": "Pipes can be disabled with redstone.\nItems will not flow into disabled (powered) pipes.",
+  "quark_ponders.ponder.quark_pipe.text_6": "When items can't go any other direction, they will try go up.",
+  "quark_ponders.ponder.quark_pipe.text_7": "By default, all items will try go down whenever possible.",
+  "quark_ponders.ponder.quark_pipe.text_8": "Items can go in and out of pipes.",
+  "quark_ponders.ponder.quark_pipe.text_9": "Comparators can read how many items are in a pipe.\nOne redstone lever per stack of blocks inside the pipe.",
+  "quark_ponders.ponder.quark_pipe.text_10": "Finally, if there is more than 15 stacks of items in one pipe (or just 15 different items), this will break and drop the items in the world."
 }

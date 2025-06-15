@@ -11,7 +11,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.SignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.piston.PistonHeadBlock;
@@ -107,7 +106,7 @@ public class PistonMoveTEScene {
         scene.idle(25);
         PonderAux.clickLampButton(scene, util, button, lamp, false, true);
         scene.idle(40);
-        scene.effects().emitParticles(piston.west().getCenter(), scene.effects().particleEmitterWithinBlockSpace(new DustParticleOptions(new Vector3f(0), 1), Vec3.ZERO), 150, 1);
+        PonderAux.setSmoke(scene, piston.west());
         scene.idle(5);
         scene.world().setBlock(piston.west(), Blocks.SPAWNER.defaultBlockState(), false);
         scene.overlay().showText(80)

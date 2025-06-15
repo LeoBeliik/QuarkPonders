@@ -1,6 +1,6 @@
 package com.leobeliik.quark_ponders;
 
-import com.leobeliik.quark_ponders.ponder.QuarkPPonderPlugin;
+import com.leobeliik.quark_ponders.ponder.RegisterScenes;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,7 +15,7 @@ public class QuarkPonders {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            PonderIndex.addPlugin(new QuarkPPonderPlugin());
+            PonderIndex.addPlugin(new RegisterScenes());
         }
     }
 }

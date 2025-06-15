@@ -1,20 +1,48 @@
 package com.leobeliik.quark_ponders.ponder;
 
 import com.leobeliik.quark_ponders.ponder.scenes.automation.*;
+import com.leobeliik.quark_ponders.ponder.scenes.building.GlassItemFrameScene;
+import com.leobeliik.quark_ponders.ponder.scenes.building.IronGrateScene;
+import com.leobeliik.quark_ponders.ponder.scenes.building.RopeScene;
+import com.leobeliik.quark_ponders.ponder.scenes.oddities.PipeScene;
+import com.leobeliik.quark_ponders.ponder.scenes.tools.SkullPikeScenes;
+import com.leobeliik.quark_ponders.ponder.scenes.tweaks.EnhancedLadderScene;
+import com.leobeliik.quark_ponders.ponder.scenes.tweaks.ScaffoldingSubstitutionScene;
+import com.leobeliik.quark_ponders.ponder.scenes.tweaks.SlimesToMagmaCubesScene;
+import net.createmod.ponder.api.registration.PonderPlugin;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
 import net.createmod.ponder.api.scene.PonderStoryBoard;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
+import org.violetmoon.quark.addons.oddities.module.PipesModule;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.automation.module.*;
+import org.violetmoon.quark.content.building.module.GlassItemFrameModule;
+import org.violetmoon.quark.content.building.module.GrateModule;
+import org.violetmoon.quark.content.building.module.RopeModule;
+import org.violetmoon.quark.content.tools.module.SkullPikesModule;
+import org.violetmoon.quark.content.tweaks.module.EnhancedLaddersModule;
+import org.violetmoon.quark.content.tweaks.module.ReplaceScaffoldingModule;
+import org.violetmoon.quark.content.tweaks.module.SlimesToMagmaCubesModule;
 import org.violetmoon.zeta.module.ZetaModule;
 
 import java.util.List;
 import java.util.Map;
 
-class RegisterScenes {
-    private record ModuleSceneInfo(Class<? extends ZetaModule> module, ResourceLocation rl, String sbPath, PonderStoryBoard scene) {}
+import static com.leobeliik.quark_ponders.QuarkPonders.MODID;
 
-    static void register(PonderSceneRegistrationHelper<ResourceLocation> helper) {
+public class RegisterScenes implements PonderPlugin {
+    private record ModuleSceneInfo(Class<? extends ZetaModule> module, ResourceLocation rl, String sbPath,
+                                   PonderStoryBoard scene) {
+    }
+
+    @Override
+    public @NotNull String getModId() {
+        return MODID;
+    }
+
+    @Override
+    public void registerScenes(@NotNull PonderSceneRegistrationHelper<ResourceLocation> helper) {
         Quark.ZETA.modules.getCategories().stream().filter(category ->
                 Quark.ZETA.configManager.isCategoryEnabled(category)).forEach(category ->
                 loadScenes(helper, MODULE_MAP.get(category.name)));
@@ -48,16 +76,37 @@ class RegisterScenes {
             new ModuleSceneInfo(RedstoneRandomizerModule.class, asResource("quark", "redstone_randomizer"), "automation/redstone_randomizer", RedstoneRandomizerScene::Working)
     );
 
+    private static List<ModuleSceneInfo> buildingModules = List.of(
+            new ModuleSceneInfo(GlassItemFrameModule.class, asResource("quark", "glass_item_frame"), "building/glass_item_frame", GlassItemFrameScene::Working),
+            new ModuleSceneInfo(GlassItemFrameModule.class, asResource("quark", "glowing_glass_item_frame"), "building/glass_item_frame", GlassItemFrameScene::Working),
+            new ModuleSceneInfo(GrateModule.class, asResource("quark", "grate"), "building/grate", IronGrateScene::Working),
+            new ModuleSceneInfo(RopeModule.class, asResource("quark", "rope"), "building/rope", RopeScene::Working)
+    );
+
+    private static List<ModuleSceneInfo> toolsModules = List.of(
+            new ModuleSceneInfo(SkullPikesModule.class, asResource("minecraft", "player_head"), "tools/skull_pike", SkullPikeScenes::Working)
+    );
+
+    private static List<ModuleSceneInfo> tweaksModules = List.of(
+            new ModuleSceneInfo(EnhancedLaddersModule.class, asResource("minecraft", "ladder"), "tweaks/enhanced_ladders", EnhancedLadderScene::Working),
+            new ModuleSceneInfo(ReplaceScaffoldingModule.class, asResource("minecraft", "scaffolding"), "tweaks/scaffolding_substitution", ScaffoldingSubstitutionScene::Working),
+            new ModuleSceneInfo(SlimesToMagmaCubesModule.class, asResource("minecraft", "magma_cream"), "tweaks/slimes_to_magma_cubes", SlimesToMagmaCubesScene::Working)
+    );
+
+    private static List<ModuleSceneInfo> odditiesModules = List.of(
+            new ModuleSceneInfo(PipesModule.class, asResource("quark", "pipe"), "oddities/pipe", PipeScene::Working)
+    );
+
     private static final Map<String, List<ModuleSceneInfo>> MODULE_MAP = Map.of(
-            "automation", automationModules/*,
+            "automation", automationModules,
             "building", buildingModules,
-            "management", managementModules,
             "tools", toolsModules,
             "tweaks", tweaksModules,
+            "oddities", odditiesModules/*
+            "management", managementModules,
             "world", worldModules,
             "mobs", mobsModules,
             "client", clientModules,
-            "experimental", experimentalModules,
-            "oddities", odditiesModules*/
+            "experimental", experimentalModules*/
     );
 }
