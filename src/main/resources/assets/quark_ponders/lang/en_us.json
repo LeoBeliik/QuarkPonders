@@ -84,6 +84,11 @@
   "quark_ponders.ponder.quark_rope.text_5": "As you can see, ropes can pull up and push down (some) blocks at the end of them.",
   "quark_ponders.ponder.quark_rope.text_6": "Ropes also work as ladders!",
 
+  "category": "MOBS",
+  "quark_ponders.ponder.quark_toretoise.header": "Oretoises",
+  "quark_ponders.ponder.quark_toretoise.text_1": "Oretoises are new neutral mobs that will spawn deep underground and in complete darkness.",
+
+
   "category": "TOOLS",
   "quark_ponders.ponder.quark_skull_spike.header": "Skull Pikes",
   "quark_ponders.ponder.quark_skull_spike.text_1": "Setting a Skeleton Skull, Zombie Head, or Creeper Head over a fence, will create a skull pike.",
@@ -119,5 +124,18 @@
   "quark_ponders.ponder.quark_pipe.text_7": "By default, all items will try go down whenever possible.",
   "quark_ponders.ponder.quark_pipe.text_8": "Items can go in and out of pipes.",
   "quark_ponders.ponder.quark_pipe.text_9": "Comparators can read how many items are in a pipe.\nOne redstone lever per stack of blocks inside the pipe.",
-  "quark_ponders.ponder.quark_pipe.text_10": "Finally, if there is more than 15 stacks of items in one pipe (or just 15 different items), this will break and drop the items in the world."
+  "quark_ponders.ponder.quark_pipe.text_10": "Finally, if there is more than 15 stacks of items in one pipe (or just 15 different items), this will break and drop the items in the world.",
+
+  "quark_ponders.ponder.quark_magnet.header": "Magnets",
+  "quark_ponders.ponder.quark_magnet.text_1": "Magnets can move metallic blocks.\nA metallic block is defined as block made of Iron or Copper Ingots..",
+  "quark_ponders.ponder.quark_magnet.text_2": "..or things made of Iron or Copper Ingots",
+  "quark_ponders.ponder.quark_magnet.text_3": "Red side pushes.",
+  "quark_ponders.ponder.quark_magnet.text_4": "Blue side pulls.",
+  "quark_ponders.ponder.quark_magnet.text_5": "When multiple Magnets are exerting force upon the same block, the one with the biggest force wins.",
+  "quark_ponders.ponder.quark_magnet.text_6": "A magnet's force upon a block is the redstone level applied to it, minus the distance.",
+  "quark_ponders.ponder.quark_magnet.text_7": "When a Hopper is moved, it'll drop one of its items directly in front of it.",
+  "quark_ponders.ponder.quark_magnet.text_8": "If this item is a seed, it'll plant it either directly in front or one block down.",
+  "quark_ponders.ponder.quark_magnet.text_9": "When a Stonecutter is moved, it'll break any block that's above it with silk touch effect.",
+  "quark_ponders.ponder.quark_magnet.text_10": "Very hard blocks such as Obsidian can't be broken like this."
+
 }

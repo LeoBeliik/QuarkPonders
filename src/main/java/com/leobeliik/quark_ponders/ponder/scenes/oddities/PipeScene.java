@@ -2,8 +2,6 @@ package com.leobeliik.quark_ponders.ponder.scenes.oddities;
 
 import com.leobeliik.quark_ponders.ponder.PonderAux;
 import net.createmod.catnip.theme.Color;
-import net.createmod.ponder.api.element.ElementLink;
-import net.createmod.ponder.api.element.EntityElement;
 import net.createmod.ponder.api.scene.SceneBuilder;
 import net.createmod.ponder.api.scene.SceneBuildingUtil;
 import net.createmod.ponder.foundation.PonderSceneBuilder;
@@ -19,7 +17,6 @@ import net.minecraft.world.level.block.ComparatorBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.RedstoneLampBlock;
 import net.minecraft.world.phys.Vec3;
-
 import java.util.Random;
 
 public class PipeScene {

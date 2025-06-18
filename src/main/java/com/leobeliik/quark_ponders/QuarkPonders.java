@@ -1,6 +1,6 @@
 package com.leobeliik.quark_ponders;
 
-import com.leobeliik.quark_ponders.ponder.RegisterScenes;
+import com.leobeliik.quark_ponders.registry.RegisterScenes;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
