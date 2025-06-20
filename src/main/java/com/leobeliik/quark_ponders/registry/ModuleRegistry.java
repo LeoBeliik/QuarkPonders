@@ -66,7 +66,7 @@ interface ModuleRegistry extends ModuleTags {
     );
 
     static List<RegisterScenes.ModuleSceneInfo> odditiesModules = List.of(
-            new RegisterScenes.ModuleSceneInfo(PipesModule.class, asQuarkResource("pipe"), "oddities/pipe", PipeScene::Working),
+            new RegisterScenes.ModuleSceneInfo(PipesModule.class, pipes, "oddities/pipe", PipeScene::Working),
             new RegisterScenes.ModuleSceneInfo(MagnetsModule.class, asQuarkResource("magnet"), "oddities/magnet", MagnetScene::Working)
     );
 }

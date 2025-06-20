@@ -1,6 +1,7 @@
 package com.leobeliik.quark_ponders.ponder.scenes.oddities;
 
 import com.leobeliik.quark_ponders.ponder.PonderAux;
+import net.createmod.catnip.math.Pointing;
 import net.createmod.catnip.theme.Color;
 import net.createmod.ponder.api.scene.SceneBuilder;
 import net.createmod.ponder.api.scene.SceneBuildingUtil;
@@ -17,6 +18,8 @@ import net.minecraft.world.level.block.ComparatorBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.RedstoneLampBlock;
 import net.minecraft.world.phys.Vec3;
+import org.violetmoon.quark.addons.oddities.module.PipesModule;
+
 import java.util.Random;
 
 public class PipeScene {
@@ -193,11 +196,23 @@ public class PipeScene {
         //TMI
         scene.idle(20);
         scene.overlay().showText(80)
-                .text("quark_pipe.text_10")
+                .text("quark_pipe.text_10", PipesModule.maxPipeItems)
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(5);
         scene.idle(100);
+
+        //glass
+        scene.idle(30);
+        scene.overlay().showControls(hopper.south().getCenter(), Pointing.DOWN, 20).withItem(Items.GLASS.getDefaultInstance());
+        scene.idle(5);
+        scene.world().setBlock(hopper.south(), PonderAux.getBlock("encased_pipe").defaultBlockState().setValue(PipeBlock.SOUTH, true).setValue(PipeBlock.NORTH, true), false);
+        scene.idle(20);
+        scene.overlay().showText(60)
+                .text("quark_pipe.text_11")
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(hopper.south().getCenter());
         scene.markAsFinished();
     }
 

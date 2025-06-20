@@ -209,7 +209,7 @@ public class ToretoiseScene {
         scene.idle(70);
         scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.AIR.defaultBlockState(), true);
         scene.overlay().showText(60)
-                .text("quark_toretoise.text_12")
+                .text("quark_toretoise.text_12", ToretoiseModule.cooldownTicks / 20)
                 .colored(PonderPalette.BLUE)
                 .placeNearTarget()
                 .independent(40);

@@ -98,7 +98,7 @@
   "quark_ponders.ponder.quark_toretoise.text_9": "Feeding the Oretoise Glow Berries will sometimes have it regenerate its ores.",
   "quark_ponders.ponder.quark_toretoise.text_10": "The Oretoise will regenerate a random ore each time.",
   "quark_ponders.ponder.quark_toretoise.text_11": "If the Feeding Trough (from the Automation module) is enabled, the Oretoise will eat from it.",
-  "quark_ponders.ponder.quark_toretoise.text_12": "When an Oretoise generates ore, it will enter an eating cooldown for 1 minute.",
+  "quark_ponders.ponder.quark_toretoise.text_12": "When an Oretoise generates ore, it will enter an eating cooldown for %s seconds.",
   "quark_ponders.ponder.quark_toretoise.text_13": "Oretoises are 1 block tall, but grow to 1.4 blocks tall if they have an ore.",
   "quark_ponders.ponder.quark_toretoise.text_14": "If Iron Rods (from the Automation module) are enabled, pushing them onto an Oretoise with a piston will break its ore.",
 
@@ -138,7 +138,8 @@
   "quark_ponders.ponder.quark_pipe.text_7": "By default, all items will try go down whenever possible.",
   "quark_ponders.ponder.quark_pipe.text_8": "Items can go in and out of pipes.",
   "quark_ponders.ponder.quark_pipe.text_9": "Comparators can read how many items are in a pipe.\nOne redstone lever per stack of blocks inside the pipe.",
-  "quark_ponders.ponder.quark_pipe.text_10": "Finally, if there is more than 15 stacks of items in one pipe (or just 15 different items), this will break and drop the items in the world.",
+  "quark_ponders.ponder.quark_pipe.text_10": "If there is more than %s stacks of items (or this amount of different items) in one pipe, this will break and drop the items in the world.",
+  "quark_ponders.ponder.quark_pipe.text_11": "Finally, you can encase pipes in glass.",
 
   "quark_ponders.ponder.quark_magnet.header": "Magnets",
   "quark_ponders.ponder.quark_magnet.text_1": "Magnets can move metallic blocks.\nA metallic block is defined as block made of Iron or Copper Ingots..",
