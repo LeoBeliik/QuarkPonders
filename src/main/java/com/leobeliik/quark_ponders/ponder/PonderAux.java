@@ -7,7 +7,6 @@ import net.createmod.ponder.api.scene.SceneBuildingUtil;
 import net.createmod.ponder.foundation.PonderSceneBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Rotations;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -15,20 +14,16 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RedstoneLampBlock;
-import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.joml.Vector3f;
 
-import java.util.List;
 import java.util.Objects;
 
 public class PonderAux {
@@ -99,7 +94,7 @@ public class PonderAux {
      */
     public static Entity staticItem(Level level, Vec3 pos, int rot, ItemStack item) {
         ArmorStand stand = EntityType.ARMOR_STAND.create(level);
-        SynchedEntityData dataManager = stand.getEntityData();
+        SynchedEntityData dataManager = Objects.requireNonNull(stand).getEntityData();
         dataManager.set(ArmorStand.DATA_CLIENT_FLAGS, (byte)(0x01));
         stand.setPos(pos);
         stand.xo = pos.x;

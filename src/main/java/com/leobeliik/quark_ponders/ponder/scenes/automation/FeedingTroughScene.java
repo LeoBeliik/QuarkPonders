@@ -18,7 +18,6 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 import org.violetmoon.quark.content.automation.block.FeedingTroughBlock;
 import org.violetmoon.quark.content.automation.module.FeedingTroughModule;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,9 +118,7 @@ public class FeedingTroughScene {
         for (int i = 0; i <= munch; i++) {
             for (ElementLink<EntityElement> animal : animals) {
                 int finalI = i;
-                scene.world().modifyEntity(animal, cow -> {
-                    cow.setXRot(finalI % 2 == 0 ? 45 : 0);
-                });
+                scene.world().modifyEntity(animal, cow -> cow.setXRot(finalI % 2 == 0 ? 45 : 0));
                 scene.idle(2);
             }
         }

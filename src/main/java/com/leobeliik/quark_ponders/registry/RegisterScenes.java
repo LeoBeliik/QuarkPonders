@@ -30,12 +30,13 @@ public class RegisterScenes implements PonderPlugin, ModuleRegistry {
             "tweaks", tweaksModules,
             "oddities", odditiesModules,
             "mobs", mobsModules/*,
-            "management", managementModules,
-            "world", worldModules,
-            "client", clientModules,
+            "management", managementModules/*,
+            "world", worldModules/*,
+            "client", clientModules/*,
             "experimental", experimentalModules*/
     );
 
+    @SuppressWarnings("unchecked")
     private static void loadScenes(PonderSceneRegistrationHelper<ResourceLocation> helper, List<ModuleSceneInfo> modules) {
         if (modules != null)
             modules.stream().filter(info ->

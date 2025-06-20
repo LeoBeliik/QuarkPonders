@@ -19,7 +19,7 @@ public class DispenserScene {
         BlockPos dispenser = util.grid().at(2, 1, 2);
 
         //set base scene
-        PonderAux.setAgentScene(scene, util, "minecraft_dispenser");;
+        PonderAux.setAgentScene(scene, util, "minecraft_dispenser");
 
         //Explain dispenser
         scene.overlay().showText(40)

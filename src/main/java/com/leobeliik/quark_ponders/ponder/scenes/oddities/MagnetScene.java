@@ -3,9 +3,6 @@ package com.leobeliik.quark_ponders.ponder.scenes.oddities;
 import com.leobeliik.quark_ponders.ponder.PonderAux;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.PonderPalette;
-import net.createmod.ponder.api.element.ElementLink;
-import net.createmod.ponder.api.element.EntityElement;
-import net.createmod.ponder.api.element.WorldSectionElement;
 import net.createmod.ponder.api.scene.SceneBuilder;
 import net.createmod.ponder.api.scene.SceneBuildingUtil;
 import net.createmod.ponder.foundation.PonderSceneBuilder;
@@ -13,7 +10,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,11 +17,6 @@ import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.RedstoneSide;
 import net.minecraft.world.phys.Vec3;
 import org.violetmoon.quark.addons.oddities.block.MagnetBlock;
-import org.violetmoon.quark.addons.oddities.block.be.MagnetBlockEntity;
-import org.violetmoon.quark.addons.oddities.module.MagnetsModule;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MagnetScene {
     public static void Working(SceneBuilder builder, SceneBuildingUtil util) {

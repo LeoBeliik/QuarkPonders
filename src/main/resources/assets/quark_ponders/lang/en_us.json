@@ -85,11 +85,25 @@
   "quark_ponders.ponder.quark_rope.text_6": "Ropes also work as ladders!",
 
   "category": "MOBS",
+
   "quark_ponders.ponder.quark_toretoise.header": "Oretoises",
   "quark_ponders.ponder.quark_toretoise.text_1": "Oretoises are new neutral mobs that will spawn deep underground and in complete darkness.",
-
+  "quark_ponders.ponder.quark_toretoise.text_2": "When an Oretoise spawns, it'll come with a random type of ore.\n(Coal, Copper, Iron, Lapis, or Redstone).",
+  "quark_ponders.ponder.quark_toretoise.text_3": "You may attack the Oretoise with a pickaxe to have it drop that ore!",
+  "quark_ponders.ponder.quark_toretoise.text_4": "If you hit an Oretoise without a pickaxe, or when it has no ore, it'll emit a shockwave attack.",
+  "quark_ponders.ponder.quark_toretoise.text_5": "This will damage any non-Oretoise entities around, and redirect their aggro to you.",
+  "quark_ponders.ponder.quark_toretoise.text_6": "With enough care, it's possible to carry an Oretoise home and feed it so it grows more ores.",
+  "quark_ponders.ponder.quark_toretoise.text_7": "You can't boat or leash them.",
+  "quark_ponders.ponder.quark_toretoise.text_8": "But instead you can transport them in minecarts.",
+  "quark_ponders.ponder.quark_toretoise.text_9": "Feeding the Oretoise Glow Berries will sometimes have it regenerate its ores.",
+  "quark_ponders.ponder.quark_toretoise.text_10": "The Oretoise will regenerate a random ore each time.",
+  "quark_ponders.ponder.quark_toretoise.text_11": "If the Feeding Trough (from the Automation module) is enabled, the Oretoise will eat from it.",
+  "quark_ponders.ponder.quark_toretoise.text_12": "When an Oretoise generates ore, it will enter an eating cooldown for 1 minute.",
+  "quark_ponders.ponder.quark_toretoise.text_13": "Oretoises are 1 block tall, but grow to 1.4 blocks tall if they have an ore.",
+  "quark_ponders.ponder.quark_toretoise.text_14": "If Iron Rods (from the Automation module) are enabled, pushing them onto an Oretoise with a piston will break its ore.",
 
   "category": "TOOLS",
+
   "quark_ponders.ponder.quark_skull_spike.header": "Skull Pikes",
   "quark_ponders.ponder.quark_skull_spike.text_1": "Setting a Skeleton Skull, Zombie Head, or Creeper Head over a fence, will create a skull pike.",
   "quark_ponders.ponder.quark_skull_spike.text_2": "Nearby monsters in a %s block range and with line of sight will notice it, and run away in cowardice.",
