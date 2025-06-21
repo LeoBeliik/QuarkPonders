@@ -1,3 +1,4 @@
+<p align="center"><img width="400" height="400" src="common/src/main/resources/qp_logo.png"></p>
 <h1 align="center">Quark Ponders</h1>
 <h3 align="center">Pondering about the quarks.</h3> 
 <br/>
