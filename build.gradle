@@ -111,10 +111,12 @@ tasks.named('jar', Jar).configure {
     }
 
     finalizedBy 'reobfJar'
+    project.version=""
 }
 
 tasks.named('jarJar').configure {
     archiveClassifier = ''
+    archivesBaseName = "${mod_name}-${mod_version}_Forge-${minecraft_version}"
     finalizedBy 'reobfJarJar'
 }
 
