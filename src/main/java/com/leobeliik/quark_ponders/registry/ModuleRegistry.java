@@ -4,6 +4,8 @@ import com.leobeliik.quark_ponders.ponder.scenes.automation.*;
 import com.leobeliik.quark_ponders.ponder.scenes.building.GlassItemFrameScene;
 import com.leobeliik.quark_ponders.ponder.scenes.building.IronGrateScene;
 import com.leobeliik.quark_ponders.ponder.scenes.building.RopeScene;
+import com.leobeliik.quark_ponders.ponder.scenes.building.StoolScene;
+import com.leobeliik.quark_ponders.ponder.scenes.mobs.FoxHoundScene;
 import com.leobeliik.quark_ponders.ponder.scenes.mobs.ToretoiseScene;
 import com.leobeliik.quark_ponders.ponder.scenes.oddities.MagnetScene;
 import com.leobeliik.quark_ponders.ponder.scenes.oddities.PipeScene;
@@ -18,6 +20,8 @@ import org.violetmoon.quark.content.automation.module.*;
 import org.violetmoon.quark.content.building.module.GlassItemFrameModule;
 import org.violetmoon.quark.content.building.module.GrateModule;
 import org.violetmoon.quark.content.building.module.RopeModule;
+import org.violetmoon.quark.content.building.module.StoolsModule;
+import org.violetmoon.quark.content.mobs.module.FoxhoundModule;
 import org.violetmoon.quark.content.mobs.module.ToretoiseModule;
 import org.violetmoon.quark.content.tools.module.SkullPikesModule;
 import org.violetmoon.quark.content.tweaks.module.EnhancedLaddersModule;
@@ -48,11 +52,13 @@ interface ModuleRegistry extends ModuleTags {
     static List<RegisterScenes.ModuleSceneInfo> buildingModules = List.of(
             new RegisterScenes.ModuleSceneInfo(GlassItemFrameModule.class, glassFrames, "building/glass_item_frame", GlassItemFrameScene::Working),
             new RegisterScenes.ModuleSceneInfo(GrateModule.class, asQuarkResource("grate"), "building/grate", IronGrateScene::Working),
-            new RegisterScenes.ModuleSceneInfo(RopeModule.class, asQuarkResource("rope"), "building/rope", RopeScene::Working)
+            new RegisterScenes.ModuleSceneInfo(RopeModule.class, asQuarkResource("rope"), "building/rope", RopeScene::Working),
+            new RegisterScenes.ModuleSceneInfo(StoolsModule.class, stools, "building/stool", StoolScene::Working)
     );
 
     static List<RegisterScenes.ModuleSceneInfo> mobsModules = List.of(
-            new RegisterScenes.ModuleSceneInfo(ToretoiseModule.class, ores, "mobs/toretoise", ToretoiseScene::Working)
+            new RegisterScenes.ModuleSceneInfo(ToretoiseModule.class, ores, "mobs/toretoise", ToretoiseScene::Working),
+            new RegisterScenes.ModuleSceneInfo(FoxhoundModule.class, furni, "mobs/foxhound", FoxHoundScene::Working)
     );
 
     static List<RegisterScenes.ModuleSceneInfo> toolsModules = List.of(

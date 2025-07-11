@@ -87,7 +87,7 @@ public class PonderAux {
 
 
     /**
-     * Creates a statick item entity that doesn't rotate or bounce.
+     * Creates a static item entity that doesn't rotate or bounce.
      * @param pos Position of the item.
      * @param rot Rotation of the item.
      * @param item The item itself.

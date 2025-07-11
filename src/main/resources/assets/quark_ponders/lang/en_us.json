@@ -84,6 +84,12 @@
   "quark_ponders.ponder.quark_rope.text_5": "As you can see, ropes can pull up and push down (some) blocks at the end of them.",
   "quark_ponders.ponder.quark_rope.text_6": "Ropes also work as ladders!",
 
+  "quark_ponders.ponder.quark_stool.header": "Stools",
+  "quark_ponders.ponder.quark_stool.text_1": "Stools will bounce you if you fall on them, like beds.",
+  "quark_ponders.ponder.quark_stool.text_2": "And of course, you can sit on them.",
+  "quark_ponders.ponder.quark_stool.text_3": "A player sitting on a stool will be moved with it when pulled/pushed with a piston.",
+  "quark_ponders.ponder.quark_stool.text_4": "Additionally, you can place blocks over them, which makes them get bigger, like a table.",
+
   "category": "MOBS",
 
   "quark_ponders.ponder.quark_toretoise.header": "Oretoises",
@@ -101,6 +107,16 @@
   "quark_ponders.ponder.quark_toretoise.text_12": "When an Oretoise generates ore, it will enter an eating cooldown for %s seconds.",
   "quark_ponders.ponder.quark_toretoise.text_13": "Oretoises are 1 block tall, but grow to 1.4 blocks tall if they have an ore.",
   "quark_ponders.ponder.quark_toretoise.text_14": "If Iron Rods (from the Automation module) are enabled, pushing them onto an Oretoise with a piston will break its ore.",
+
+  "quark_ponders.ponder.quark_foxhound.header": "Foxhound",
+  "quark_ponders.ponder.quark_foxhound.text_1": "Foxhounds are new hostile mobs that spawn in the Nether.",
+  "quark_ponders.ponder.quark_foxhound.text_2": "These fierce doggos will attack you and set you on fire..",
+  "quark_ponders.ponder.quark_foxhound.text_3": "If you're brave enough, drink a fire resistance potion and feed them some Coal to tame them.",
+  "quark_ponders.ponder.quark_foxhound.text_4": "It will ONLY work if you have the fire resistance effect.",
+  "quark_ponders.ponder.quark_foxhound.text_5": "Once tamed, they will work basically like wolves, but!..",
+  "quark_ponders.ponder.quark_foxhound.text_6": "They will sleep on hot blocks (like magma or lit furnaces)",
+  "quark_ponders.ponder.quark_foxhound.text_7": "A foxhound on top of a furnace will speed up the burning speed.",
+  "quark_ponders.ponder.quark_foxhound.text_8": "You can't put multiple doggos on a furnace to speed it up more, though.",
 
   "category": "TOOLS",
 
