@@ -11,6 +11,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class QuarkPonders {
     public static final String MODID = "quark_ponders";
 
+    public QuarkPonders() {
+        Config.init();
+    }
+
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent

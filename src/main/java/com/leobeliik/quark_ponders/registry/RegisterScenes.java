@@ -30,9 +30,9 @@ public class RegisterScenes implements PonderPlugin, ModuleRegistry {
             "tweaks", tweaksModules,
             "oddities", odditiesModules,
             "mobs", mobsModules/*,
-            "management", managementModules/*,
-            "world", worldModules/*,
-            "client", clientModules/*,
+            "management", managementModules,
+            "world", worldModules,
+            "client", clientModules,
             "experimental", experimentalModules*/
     );
 
