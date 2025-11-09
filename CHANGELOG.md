@@ -1,1 +1,1 @@
-Added Config.
+Fixed Ponder stricted requirements (fix compat with create 6.0.8)
