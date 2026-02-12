@@ -1,6 +1,8 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
+licenseURL="https://github.com/LeoBeliik/QuarkPonders/blob/1.20.1/LICENSE.txt"
+issueTrackerURL="https://github.com/LeoBeliik/QuarkPonders/issues"
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"
@@ -11,6 +13,12 @@ description='''${mod_description}'''
 modId="neoforge"
 type="required"
 versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.quark_ponders]]
+modId="quark"
+type="required"
+versionRange="[${quark_version},)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.quark_ponders]]

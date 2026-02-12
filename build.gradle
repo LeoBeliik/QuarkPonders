@@ -18,7 +18,9 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = mod_id
+    //makes project names uppercase for better look (neoforge -> NeoForge)
+    def projectName = project.name.replaceAll(/[nf]/) { it.toUpperCase() }
+    archivesName = "QuarkPonders-${version}_NeoForge-${minecraft_version}"
 }
 
 // Mojang ships Java 21 to end users in 1.21.1, so mods should target Java 21.
@@ -117,11 +119,19 @@ repositories {
 }
 
 dependencies {
-    implementation jarJar("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:[${ponder_version}]")
+    implementation(jarJar("net.createmod.ponder:ponder-neoforge:$ponder_version") {
+        version {
+            strictly "[$ponder_version,)"
+        }
+    })
     implementation "org.violetmoon.quark:Quark:${quark_version}"
     implementation "org.violetmoon.zeta:Zeta:${zeta_version}"
     compileOnly "mezz.jei:jei-1.21.1-neoforge-api:${jei_version}"
-    runtimeOnly jarJar("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:[${flywheel_version}]")
+    runtimeOnly jarJar("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:[${flywheel_version}]"){
+        version {
+            strictly "[1.0,2.0)"
+        }
+    }
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -132,6 +142,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
             loader_version_range   : loader_version_range,
+            quark_version          : quark_version,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
@@ -143,26 +154,15 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
     expand replaceProperties
     from "src/main/templates"
     into "build/generated/sources/modMetadata"
+    //set project version to empty string to prevent gradle to put it at the end of the jar's name
+    //done it here after the mod's files were created with the corresponding mod version
+    project.version=""
 }
 // Include the output of "generateModMetadata" as an input directory for the build
 // this works with both building through Gradle and the IDE.
 sourceSets.main.resources.srcDir generateModMetadata
 // To avoid having to run "generateModMetadata" manually, make it run on every project reload
 neoForge.ideSyncTask generateModMetadata
-
-// Example configuration to allow publishing using the maven-publish plugin
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/repo"
-        }
-    }
-}
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
