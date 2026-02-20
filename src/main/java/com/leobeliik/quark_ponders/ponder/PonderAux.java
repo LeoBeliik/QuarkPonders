@@ -1,5 +1,6 @@
 package com.leobeliik.quark_ponders.ponder;
 
+import com.mojang.authlib.properties.PropertyMap;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.element.ElementLink;
 import net.createmod.ponder.api.element.EntityElement;
@@ -8,6 +9,7 @@ import net.createmod.ponder.foundation.PonderSceneBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -17,6 +19,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -25,8 +28,11 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RedstoneLampBlock;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
+import org.violetmoon.quark.base.handler.ContributorRewardHandler;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 
 public class PonderAux {
 
@@ -185,13 +191,20 @@ public class PonderAux {
         LivingEntity armorStand = (LivingEntity) PonderAux.newEntity(EntityType.ARMOR_STAND, level, pos, rot);
         armorStand.setInvisible(true);
         ItemStack head = Items.PLAYER_HEAD.getDefaultInstance();
+
+        Random random = new Random();
+        //make some guests appear sometimes or just be random
+        UUID playerUUID = random.nextBoolean() ?
+                UUID.fromString(ContributorRewardHandler.DEV_UUID.stream().toList().get(random.nextInt(ContributorRewardHandler.DEV_UUID.size()))) : UUID.randomUUID();
+
+        ResolvableProfile profile = new ResolvableProfile(Optional.empty(), Optional.of(playerUUID), new PropertyMap());
+        head.set(DataComponents.PROFILE, profile);
+
         HolderLookup.Provider lookupProvider = level.registryAccess();
         HolderLookup.RegistryLookup<Enchantment> enchantmentRegistryLookup = lookupProvider.lookupOrThrow(Registries.ENCHANTMENT);
         head.enchant(enchantmentRegistryLookup.getOrThrow(Enchantments.BINDING_CURSE), 1);
+
         armorStand.setItemSlot(EquipmentSlot.HEAD, head);
-        armorStand.setItemSlot(EquipmentSlot.CHEST, Items.IRON_CHESTPLATE.getDefaultInstance());
-        armorStand.setItemSlot(EquipmentSlot.LEGS, Items.IRON_LEGGINGS.getDefaultInstance());
-        armorStand.setItemSlot(EquipmentSlot.FEET, Items.IRON_BOOTS.getDefaultInstance());
         return armorStand;
     }
 
