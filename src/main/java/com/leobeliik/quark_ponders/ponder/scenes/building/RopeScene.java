@@ -22,12 +22,12 @@ public class RopeScene {
         scene.idle(20);
 
         //explain rope
-        scene.overlay().showText(60)
+        scene.overlay().showText(100)
                 .text("quark_rope.text_1")
                 .independent(20)
                 .attachKeyFrame()
                 .placeNearTarget();
-        scene.idle(80);
+        scene.idle(110);
 
         scene.overlay().showControls(rope.getCenter(), Pointing.UP, 20).withItem(PonderAux.getBlock("rope").asItem().getDefaultInstance());
         scene.idle(15);
@@ -44,12 +44,12 @@ public class RopeScene {
         scene.idle(40);
 
         //extend
-        scene.overlay().showText(60)
+        scene.overlay().showText(100)
                 .text("quark_rope.text_2")
                 .independent(20)
                 .attachKeyFrame()
                 .placeNearTarget();
-        scene.idle(90);
+        scene.idle(130);
 
         scene.overlay().showControls(rope.getCenter(), Pointing.DOWN, 20).withItem(PonderAux.getBlock("rope").asItem().getDefaultInstance());
         scene.idle(15);
@@ -98,12 +98,12 @@ public class RopeScene {
         scene.idle(20);
 
         //ladders!
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_rope.text_6")
                 .independent(25)
                 .attachKeyFrame()
                 .placeNearTarget();
-        scene.idle(80);
+        scene.idle(100);
         scene.markAsFinished();
     }
 }

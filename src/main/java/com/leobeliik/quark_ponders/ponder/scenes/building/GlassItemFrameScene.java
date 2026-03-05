@@ -40,7 +40,7 @@ public class GlassItemFrameScene {
         PonderAux.setAgentScene(scene, util, "quark_glass_item_frame");
 
         //explain the frame
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_glass_item_frame.text_1")
                 .pointAt(frame.getCenter().add(0, -0.5, 0))
                 .attachKeyFrame()
@@ -49,11 +49,10 @@ public class GlassItemFrameScene {
         scene.overlay().showControls(frame.getCenter().add(0, -0.5, 0), Pointing.DOWN, 20).withItem(onShowItem);
         scene.idle(10);
         scene.world().modifyEntity(frameEntity, entity -> ((GlassItemFrame) entity).setItem(onShowItem));
-        scene.idle(40);
+        scene.idle(60);
 
         //show banner
-        scene.rotateCameraY(360);
-        scene.idle(20);
+        PonderAux.transition(scene);
         scene.world().modifyEntity(frameEntity, Entity::discard);
         List<ElementLink<EntityElement>> frames = new ArrayList<>();
         for (int i = 1; i <= 3; i++) {
@@ -63,12 +62,12 @@ public class GlassItemFrameScene {
                 frames.add(scene.world().createEntity(level -> new GlassItemFrame(level, util.grid().at(finalI, 1, finalJ), Direction.UP)));
             }
         }
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_glass_item_frame.text_2")
                 .pointAt(frame.getCenter().add(0, -0.5, 0))
                 .attachKeyFrame()
                 .placeNearTarget();
-        scene.idle(80);
+        scene.idle(120);
 
         ItemStack banner = brickBanner();
 
@@ -80,8 +79,7 @@ public class GlassItemFrameScene {
         scene.idle(40);
 
         //sign item frame
-        scene.rotateCameraY(360);
-        scene.idle(15);
+        PonderAux.transition(scene);
         frames.forEach(entity -> scene.world().modifyEntity(entity, Entity::discard));
         scene.world().setBlock(frame, Blocks.OAK_SIGN.defaultBlockState(), false);
         frameEntity = scene.world().createEntity(level -> new GlassItemFrame(level, frame.north(), Direction.NORTH));
@@ -104,8 +102,7 @@ public class GlassItemFrameScene {
         scene.idle(80);
 
         //glass item frames on chests
-        scene.rotateCameraY(360);
-        scene.idle(15);
+        PonderAux.transition(scene);
         scene.world().modifyEntity(item, Entity::discard);
         scene.world().setBlock(frame, Blocks.CHEST.defaultBlockState(), false);
         frameEntity = scene.world().createEntity(level -> {
@@ -130,8 +127,7 @@ public class GlassItemFrameScene {
         scene.idle(20);
 
         //maps
-        scene.rotateCameraY(360);
-        scene.idle(15);
+        PonderAux.transition(scene);
         scene.world().modifyEntity(frameEntity, Entity::discard);
         scene.world().setBlock(frame, Blocks.AIR.defaultBlockState(), false);
         frameEntity = scene.world().createEntity(level -> new GlassItemFrame(level, frame, Direction.UP));

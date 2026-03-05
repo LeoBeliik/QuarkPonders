@@ -49,12 +49,12 @@ public class GravisandScene {
         scene.idle(40);
 
         //it also goes up
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_gravisand.text_2")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(gravisand.below().getCenter().add(0.5, 0, 0.5));
-        scene.idle(80);
+        scene.idle(100);
 
         PonderAux.clickLampButton(scene, util, buttonDown, buttonDown.east(), true, false);
         scene.idle(5);
@@ -62,11 +62,10 @@ public class GravisandScene {
         PonderAux.clickLampButton(scene, util, buttonDown, buttonDown.east(), false, false);
 
         scene.idle(40);
-        scene.rotateCameraY(360);
         scene.world().hideIndependentSection(lampBottom, Direction.UP);
         scene.world().hideIndependentSection(lampTop, Direction.UP);
         scene.world().hideIndependentSection(gravisandSelection, Direction.UP);
-        scene.idle(60);
+        scene.idle(20);
 
         //it propagates
         scene.world().setBlock(gravisand, Blocks.AIR.defaultBlockState(), false);
@@ -95,12 +94,10 @@ public class GravisandScene {
         scene.world().setBlock(buttonHigh, Blocks.AIR.defaultBlockState(), true);
         scene.idle(5);
         scene.world().moveSection(gravisandSideSelection, util.vector().of(0, -1, 0), 10);
-        scene.idle(60);
-
-        scene.rotateCameraY(360);
+        scene.idle(40);
         scene.world().hideIndependentSection(newGravisandSelection, Direction.UP);
         scene.world().hideIndependentSection(gravisandSideSelection, Direction.UP);
-        scene.idle(60);
+        scene.idle(20);
 
         //it emits redstone too
 

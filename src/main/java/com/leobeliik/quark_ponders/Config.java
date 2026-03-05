@@ -3,6 +3,7 @@ package com.leobeliik.quark_ponders;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
 import java.util.List;
 
 public class Config {
@@ -45,6 +46,7 @@ public class Config {
     //Oddities
     public static ModConfigSpec.ConfigValue<List<? extends String>> pipes_module;
     public static ModConfigSpec.ConfigValue<List<? extends String>> magnet_module;
+    public static ModConfigSpec.ConfigValue<List<? extends String>> matrix_module;
 
     static void init(ModContainer container) {
         buildConfig();
@@ -76,6 +78,13 @@ public class Config {
         magnet_module = CLIENT_BUILDER.comment("List of items for the Magnet ponder scene, sepparated by ','.")
                 .defineList("magnet_module", List.of("quark:magnet"), () -> "", o -> o instanceof String);
 
+        matrix_module = CLIENT_BUILDER.comment("List of items for the Candle Influence (matrix enchanter) ponder scene, sepparated by ','.")
+                .defineList("matrix_module", List.of("minecraft:candle", "minecraft:white_candle", "minecraft:orange_candle",
+                        "minecraft:magenta_candle", "minecraft:light_blue_candle", "minecraft:yellow_candle", "minecraft:lime_candle",
+                        "minecraft:pink_candle", "minecraft:gray_candle", "minecraft:light_gray_candle", "minecraft:cyan_candle",
+                        "minecraft:purple_candle", "minecraft:blue_candle", "minecraft:brown_candle", "minecraft:green_candle",
+                        "minecraft:red_candle", "minecraft:black_candle"), () -> "", o -> o instanceof String);
+
         CLIENT_BUILDER.pop();
     }
 
@@ -84,8 +93,8 @@ public class Config {
 
         enhancedLadders_module = CLIENT_BUILDER.comment("List of items for the Enhanced Ladders ponder scene, sepparated by ','.")
                 .defineList("enhancedLadders_module", List.of("minecraft:ladder", "quark:spruce_ladder", "quark:birch_ladder", "quark:jungle_ladder",
-                        "quark:acacia_ladder", "quark:dark_oak_ladder", "quark:crimson_ladder", "quark:warped_ladder", "quark:mangrove_ladder",
-                        "quark:bamboo_ladder", "quark:cherry_ladder", "quark:iron_ladder", "quark:azalea_ladder", "quark:ancient_ladder"), () -> "",
+                                "quark:acacia_ladder", "quark:dark_oak_ladder", "quark:crimson_ladder", "quark:warped_ladder", "quark:mangrove_ladder",
+                                "quark:bamboo_ladder", "quark:cherry_ladder", "quark:iron_ladder", "quark:azalea_ladder", "quark:ancient_ladder"), () -> "",
                         o -> o instanceof String);
 
         replaceScaffolding_module = CLIENT_BUILDER.comment("List of items for the Replace scaffoldings ponder scene, sepparated by ','.")

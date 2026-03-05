@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.RedstoneLampBlock;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 import org.violetmoon.quark.base.handler.ContributorRewardHandler;
+
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
@@ -217,4 +218,18 @@ public class PonderAux {
         scene.effects().emitParticles(pos.getCenter(), scene.effects().particleEmitterWithinBlockSpace(new DustParticleOptions(new Vector3f(0), 1), Vec3.ZERO), 150, 1);
     }
 
+    /**
+     * Adds particles everywhere on the scene to transition.
+     *
+     * @param scene The scene in question.
+     */
+    public static void transition(PonderSceneBuilder scene) {
+        BlockPos start = new BlockPos(0, 0, 0);
+        BlockPos end = new BlockPos(4, 3, 4);
+
+        for (BlockPos pos : BlockPos.betweenClosed(start, end)) {
+            setSmoke(scene, pos);
+        }
+        scene.idle(5);
+    }
 }

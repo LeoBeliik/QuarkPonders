@@ -27,10 +27,14 @@ import net.minecraft.world.level.block.piston.PistonHeadBlock;
 import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraft.world.phys.Vec3;
+import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.automation.block.FeedingTroughBlock;
 import org.violetmoon.quark.content.automation.block.IronRodBlock;
+import org.violetmoon.quark.content.automation.module.FeedingTroughModule;
+import org.violetmoon.quark.content.automation.module.IronRodModule;
 import org.violetmoon.quark.content.mobs.entity.Toretoise;
 import org.violetmoon.quark.content.mobs.module.ToretoiseModule;
+import org.violetmoon.zeta.module.ZetaModuleManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +51,12 @@ public class ToretoiseScene {
         scene.idle(10);
 
         //explain module
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_toretoise.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(toretoise.getCenter());
-        scene.idle(90);
+        scene.idle(100);
 
         scene.overlay().showText(80)
                 .text("quark_toretoise.text_2")
@@ -61,12 +65,12 @@ public class ToretoiseScene {
                 .pointAt(toretoise.getCenter());
         scene.idle(100);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_toretoise.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(toretoise.getCenter());
-        scene.idle(60);
+        scene.idle(80);
 
         scene.overlay().showControls(toretoise.getCenter(), Pointing.UP, 20).withItem(Items.WOODEN_PICKAXE.getDefaultInstance());
         scene.idle(5);
@@ -77,12 +81,12 @@ public class ToretoiseScene {
         scene.world().modifyEntity(item, Entity::discard);
 
         //aoe attack
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_toretoise.text_4")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(toretoise.getCenter());
-        scene.idle(80);
+        scene.idle(100);
         scene.overlay().showControls(toretoise.getCenter(), Pointing.DOWN, 20).withItem(Items.WOODEN_SWORD.getDefaultInstance());
         scene.idle(5);
         scene.world().modifyEntity(tot, entity -> {
@@ -97,7 +101,7 @@ public class ToretoiseScene {
             }
         }
         scene.idle(10);
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_toretoise.text_5")
                 .colored(PonderPalette.BLUE)
                 .placeNearTarget()
@@ -105,19 +109,19 @@ public class ToretoiseScene {
         scene.idle(100);
 
         //transport
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_toretoise.text_6")
                 .colored(PonderPalette.GREEN)
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(toretoise.getCenter());
-        scene.idle(80);
+        scene.idle(100);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_toretoise.text_7")
                 .placeNearTarget()
                 .pointAt(toretoise.getCenter());
-        scene.idle(60);
+        scene.idle(80);
 
         scene.overlay().showControls(toretoise.getCenter(), Pointing.DOWN, 20).withItem(Items.LEAD.getDefaultInstance()).showing(PonderGuiTextures.ICON_DISABLE);
         scene.idle(40);
@@ -168,10 +172,9 @@ public class ToretoiseScene {
             scene.idle(1);
             scene.world().modifyEntity(cart, entity -> entity.move(MoverType.SELF, new Vec3(-0.2, 0, 0)));
             scene.world().modifyEntity(tot, entity -> entity.move(MoverType.SELF, new Vec3(-0.2, 0, 0)));
-            if (i >= 14)
-                scene.world().modifyEntity(cart, Entity::discard);
         }
         scene.world().modifyEntity(tot, Entity::discard);
+        scene.world().modifyEntity(cart, Entity::discard);
 
         //feed
         for (ElementLink<WorldSectionElement> section : sections) {
@@ -180,42 +183,66 @@ public class ToretoiseScene {
         scene.idle(40);
         tot = scene.world().createEntity(level -> createToretoise(level, toretoise, 0));
         scene.idle(20);
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_toretoise.text_9")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(toretoise.getCenter());
-        scene.idle(80);
-        for (int i = 0; i < 3; i++) {
-            scene.overlay().showControls(toretoise.west().getCenter(), Pointing.DOWN, 20).withItem(Items.GLOW_BERRIES.getDefaultInstance());
-            scene.idle(30);
-        }
+        scene.idle(100);
 
-        scene.world().modifyEntity(tot, Entity::discard);
-        var tot2 = scene.world().createEntity(level -> createToretoise(level, toretoise, 1));
+        scene.overlay().showControls(toretoise.west().getCenter(), Pointing.DOWN, 20).withItem(Items.GLOW_BERRIES.getDefaultInstance());
+        scene.effects().emitParticles(toretoise.west().getCenter(), scene.effects().simpleParticleEmitter(ParticleTypes.CRIT, Vec3.ZERO), 100, 8);
+        scene.idle(30);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(80)
                 .text("quark_toretoise.text_10")
-                .colored(PonderPalette.BLUE)
+                .colored(PonderPalette.RED)
                 .placeNearTarget()
-                .independent(40);
-        scene.idle(60);
+                .independent(10);
 
-        var section = scene.world().showIndependentSection(util.select().position(0, 1, 2), Direction.DOWN);
-        scene.world().setBlock(util.grid().at(0, 1, 2), PonderAux.getBlock("feeding_trough").defaultBlockState().setValue(FeedingTroughBlock.FULL, true), false);
+        scene.overlay().showControls(toretoise.west().getCenter(), Pointing.DOWN, 20).withItem(Items.GLOW_BERRIES.getDefaultInstance());
+        scene.effects().emitParticles(toretoise.west().getCenter(), scene.effects().simpleParticleEmitter(ParticleTypes.CRIT, Vec3.ZERO), 100, 8);
+        scene.idle(30);
+
+        scene.overlay().showControls(toretoise.west().getCenter(), Pointing.DOWN, 20).withItem(Items.GLOW_BERRIES.getDefaultInstance());
+        scene.idle(5);
+        scene.effects().emitParticles(toretoise.west().getCenter(), scene.effects().simpleParticleEmitter(ParticleTypes.CRIT, Vec3.ZERO), 100, 8);
+        var tot2 = scene.world().createEntity(level -> createToretoise(level, toretoise, 1));
+        scene.world().modifyEntity(tot, Entity::discard);
+
+        scene.idle(70);
         scene.overlay().showText(60)
                 .text("quark_toretoise.text_11")
-                .attachKeyFrame()
-                .placeNearTarget()
-                .pointAt(util.grid().at(0, 1, 2).getCenter());
-        scene.idle(70);
-        scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.AIR.defaultBlockState(), true);
-        scene.overlay().showText(60)
-                .text("quark_toretoise.text_12", ToretoiseModule.cooldownTicks / 20)
                 .colored(PonderPalette.BLUE)
                 .placeNearTarget()
                 .independent(40);
         scene.idle(80);
+
+        var section = scene.world().showIndependentSection(util.select().position(0, 1, 2), Direction.DOWN);
+
+        if (Quark.ZETA.modules.isEnabled(FeedingTroughModule.class)) {
+            scene.world().setBlock(util.grid().at(0, 1, 2), PonderAux.getBlock("feeding_trough").defaultBlockState().setValue(FeedingTroughBlock.FULL, true), false);
+            scene.overlay().showText(80)
+                    .text("quark_toretoise.text_12")
+                    .attachKeyFrame()
+                    .placeNearTarget()
+                    .pointAt(util.grid().at(0, 1, 2).getCenter());
+            scene.idle(90);
+            scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.AIR.defaultBlockState(), true);
+        } else {
+            scene.overlay().showText(10)
+                    .text("quark_toretoise.text_12")
+                    .independent(500);
+            scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.AIR.defaultBlockState(), false);
+        }
+
+        scene.idle(20);
+        scene.overlay().showText(80)
+                .text("quark_toretoise.text_13", ToretoiseModule.cooldownTicks / 20)
+                .colored(PonderPalette.BLUE)
+                .placeNearTarget()
+                .independent(40);
+        scene.idle(100);
 
         //tripwire
         scene.world().modifyEntity(tot2, Entity::discard);
@@ -230,12 +257,12 @@ public class ToretoiseScene {
         scene.world().setBlock(util.grid().at(2, 2, 2), Blocks.TRIPWIRE.defaultBlockState(), false);
         scene.idle(50);
 
-        scene.overlay().showText(60)
-                .text("quark_toretoise.text_13")
+        scene.overlay().showText(80)
+                .text("quark_toretoise.text_14")
                 .placeNearTarget()
                 .attachKeyFrame()
                 .pointAt(toretoise.above().getCenter().add(0, -0.25, 0));
-        scene.idle(80);
+        scene.idle(100);
 
         scene.overlay().showControls(toretoise.west().getCenter(), Pointing.UP, 20).withItem(Items.GLOW_BERRIES.getDefaultInstance());
         scene.idle(10);
@@ -248,31 +275,32 @@ public class ToretoiseScene {
         //iron rod
         scene.world().hideIndependentSection(section, Direction.UP);
         scene.idle(20);
-        scene.world().setBlocks(util.select().fromTo(0, 2, 0, 5, 5, 5), Blocks.AIR.defaultBlockState(), false);
-        scene.world().setBlock(toretoise.above(3), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.DOWN), false);
-        scene.world().setBlock(toretoise.above(2), PonderAux.getBlock("iron_rod").defaultBlockState().setValue(IronRodBlock.FACING, Direction.DOWN), false);
-        scene.world().showIndependentSection(util.select().fromTo(0, 2, 0, 5, 5, 5), Direction.DOWN);
-        scene.idle(40);
-        scene.overlay().showText(60)
-                .text("quark_toretoise.text_14")
-                .placeNearTarget()
-                .attachKeyFrame()
-                .pointAt(toretoise.above(2).getCenter());
-        scene.idle(80);
+        if (Quark.ZETA.modules.isEnabled(IronRodModule.class)) {
+            scene.world().setBlocks(util.select().fromTo(0, 2, 0, 5, 5, 5), Blocks.AIR.defaultBlockState(), false);
+            scene.world().setBlock(toretoise.above(3), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.DOWN), false);
+            scene.world().setBlock(toretoise.above(2), PonderAux.getBlock("iron_rod").defaultBlockState().setValue(IronRodBlock.FACING, Direction.DOWN), false);
+            scene.world().showIndependentSection(util.select().fromTo(0, 2, 0, 5, 5, 5), Direction.DOWN);
+            scene.idle(40);
+            scene.overlay().showText(80)
+                    .text("quark_toretoise.text_15")
+                    .placeNearTarget()
+                    .attachKeyFrame()
+                    .pointAt(toretoise.above(2).getCenter());
+            scene.idle(100);
 
-        scene.world().setBlock(toretoise.above(3), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.DOWN)
-                .setValue(PistonBaseBlock.EXTENDED, true), false);
-        scene.world().setBlock(toretoise.above(2), Blocks.PISTON_HEAD.defaultBlockState()
-                .setValue(PistonHeadBlock.FACING, Direction.DOWN).setValue(PistonHeadBlock.TYPE, PistonType.STICKY), false);
-        scene.world().setBlock(toretoise.above(), PonderAux.getBlock("iron_rod").defaultBlockState().setValue(IronRodBlock.FACING, Direction.DOWN), false);
-        scene.idle(5);
-        scene.world().createItemEntity(toretoise.getCenter(), new Vec3(0, 1, 0), Items.REDSTONE.getDefaultInstance());
-        scene.world().createEntity(level -> createToretoise(level, toretoise, 0));
-        scene.world().modifyEntity(tot2, Entity::discard);
-        scene.idle(10);
-        scene.world().setBlock(toretoise.above(3), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.DOWN), false);
-        scene.world().setBlock(toretoise.above(2), PonderAux.getBlock("iron_rod").defaultBlockState().setValue(IronRodBlock.FACING, Direction.DOWN), false);
-        scene.world().setBlock(toretoise.above(), Blocks.AIR.defaultBlockState(), false);
+            scene.world().setBlock(toretoise.above(3), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.DOWN)
+                    .setValue(PistonBaseBlock.EXTENDED, true), false);
+            scene.world().setBlock(toretoise.above(2), Blocks.PISTON_HEAD.defaultBlockState()
+                    .setValue(PistonHeadBlock.FACING, Direction.DOWN).setValue(PistonHeadBlock.TYPE, PistonType.STICKY), false);
+            scene.world().setBlock(toretoise.above(), PonderAux.getBlock("iron_rod").defaultBlockState().setValue(IronRodBlock.FACING, Direction.DOWN), false);
+            scene.world().createItemEntity(toretoise.getCenter(), new Vec3(-0.01, 1, -0.2), Items.REDSTONE.getDefaultInstance());
+            scene.world().createEntity(level -> createToretoise(level, toretoise, 0));
+            scene.world().modifyEntity(tot2, Entity::discard);
+            scene.idle(10);
+            scene.world().setBlock(toretoise.above(3), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.DOWN), false);
+            scene.world().setBlock(toretoise.above(2), PonderAux.getBlock("iron_rod").defaultBlockState().setValue(IronRodBlock.FACING, Direction.DOWN), false);
+            scene.world().setBlock(toretoise.above(), Blocks.AIR.defaultBlockState(), false);
+        }
         scene.markAsFinished();
     }
 

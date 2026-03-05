@@ -28,25 +28,25 @@ public class ChuteScene {
         PonderAux.setAgentScene(scene, util, "quark_chute");
 
         //Explain chute
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_chute.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(chute.getCenter().add(0.25, 0, 0.5));
-        scene.idle(80);
+        scene.idle(100);
 
         //show chute working with dropper and hopper
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_chute.text_2")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(chute.getCenter().add(0.25, 0, 0.5));
-        scene.idle(80);
+        scene.idle(100);
 
         toggleLever(scene, util, lever, false);
 
         List<ElementLink<EntityElement>> drops = new ArrayList<>();
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_chute.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
@@ -68,16 +68,16 @@ public class ChuteScene {
         PonderAux.clickLampButton(scene, util, button, button.east(), false, true);
         scene.idle(20);
         burnDrops(scene, chute, drops);
-        scene.idle(20);
+        scene.idle(40);
 
         //lock with redstone and solid block
         scene.world().setBlock(util.grid().at(2, 3, 2), Blocks.REDSTONE_BLOCK.defaultBlockState(), true);
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .placeNearTarget()
                 .attachKeyFrame()
                 .text("quark_chute.text_4")
                 .pointAt(util.vector().topOf(chute));
-        scene.idle(60);
+        scene.idle(80);
         toggleLever(scene, util, lever, false);
         scene.idle(30);
         toggleLever(scene, util, lever, true);
@@ -89,7 +89,7 @@ public class ChuteScene {
         scene.world().setBlock(util.grid().at(2, 3, 2), Blocks.AIR.defaultBlockState(), true);
         scene.idle(20
         );
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_chute.text_5")
                 .attachKeyFrame()
                 .placeNearTarget()
@@ -97,22 +97,23 @@ public class ChuteScene {
         scene.world().setBlock(util.grid().at(2, 1, 2), Blocks.DARK_OAK_PLANKS.defaultBlockState(), true);
         scene.idle(40);
         scene.world().setBlock(util.grid().at(2, 1, 2), Blocks.AIR.defaultBlockState(), true);
-        scene.idle(20);
+        scene.idle(40);
 
         //indicate it works with hollow blocks
-        scene.overlay().showText(40)
+        scene.overlay().showText(80)
                 .text("quark_chute.text_6")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(chute.below().getCenter());
         scene.world().setBlock(util.grid().at(2, 1, 2), PonderAux.getBlock("hollow_oak_log").defaultBlockState(), true);
-        scene.idle(10);
+        scene.idle(20);
         PonderAux.clickLampButton(scene, util, button, button.east(), true, true);
         drops.add(scene.world().createItemEntity(chute.getCenter().add(0, -0.75, 0), util.vector().of(0, .5f, 0), new ItemStack(Items.OAK_PLANKS)));
-        scene.idle(10);
+        scene.idle(20);
         PonderAux.clickLampButton(scene, util, button, button.east(), false, true);
-        scene.idle(10);
+        scene.idle(20);
         scene.world().setBlock(util.grid().at(2, 1, 2), Blocks.AIR.defaultBlockState(), true);
+        scene.idle(40);
         scene.markAsFinished();
     }
 

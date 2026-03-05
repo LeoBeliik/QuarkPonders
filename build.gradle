@@ -126,7 +126,7 @@ dependencies {
     })
     implementation "org.violetmoon.quark:Quark:${quark_version}"
     implementation "org.violetmoon.zeta:Zeta:${zeta_version}"
-    compileOnly "mezz.jei:jei-1.21.1-neoforge-api:${jei_version}"
+    implementation "mezz.jei:jei-1.21.1-neoforge:${jei_version}"
     runtimeOnly jarJar("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:[${flywheel_version}]"){
         version {
             strictly "[1.0,2.0)"

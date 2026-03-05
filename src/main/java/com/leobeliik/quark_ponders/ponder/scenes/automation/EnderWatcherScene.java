@@ -24,27 +24,27 @@ public class EnderWatcherScene {
         scene.idle(25);
 
         //explain the ender watcher
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("minecraft_dispenser.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(watcher.getCenter());
-        scene.idle(60);
+        scene.idle(80);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("minecraft_dispenser.text_2")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(watcher.getCenter());
-        scene.idle(70);
+        scene.idle(80);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("minecraft_dispenser.text_3")
                 .colored(PonderPalette.BLUE)
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(util.vector().centerOf(2, 2, 0));
-        scene.idle(60);
+        scene.idle(80);
 
         //show watcher working
         scene.world().modifyEntity(stand, e -> e.setYRot(0));
@@ -52,12 +52,12 @@ public class EnderWatcherScene {
         scene.world().modifyBlock(watcher, (s -> s.setValue(EnderWatcherBlock.WATCHED, true)), false);
         scene.world().modifyBlock(watcher.below(), (s -> s.setValue(RedstoneLampBlock.LIT, true)), false);
         scene.idle(30);
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("minecraft_dispenser.text_4")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(util.vector().centerOf(watcher));
-        scene.idle(50);
+        scene.idle(80);
         scene.world().modifyEntity(stand, e -> e.setYRot(180));
         scene.idle(5);
         scene.world().modifyBlock(watcher, (s -> s.setValue(EnderWatcherBlock.WATCHED, false)), false);

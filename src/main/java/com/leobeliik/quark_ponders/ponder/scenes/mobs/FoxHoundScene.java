@@ -52,13 +52,13 @@ public class FoxHoundScene {
         PonderAux.entityMove(hound, scene, 1, Direction.WEST);
         jumpFox(hound, scene, Direction.EAST);
         jumpFox(player, scene, Direction.EAST);
-        scene.world().modifyEntity(player, entity -> entity.setRemainingFireTicks(5));
+        scene.world().modifyEntity(player, entity -> entity.setSharedFlagOnFire(true));
         scene.effects().emitParticles(util.grid().at(4, 1, 2).getCenter().add(0, 0.5, 0),
-                scene.effects().particleEmitterWithinBlockSpace(ParticleTypes.FLAME.getType(), Vec3.ZERO), 2, 40);
+                scene.effects().particleEmitterWithinBlockSpace(ParticleTypes.FLAME.getType(), Vec3.ZERO), 2, 25);
 
         scene.idle(45);
 
-        scene.rotateCameraY(360);
+        PonderAux.transition(scene);
         scene.world().modifyEntities(Entity.class, Entity::discard);
         hound = scene.world().createEntity(level -> PonderAux.newEntity(FoxhoundModule.foxhoundType, level, fox.east(3).getCenter().add(0, -0.5, 0), 90));
         player = scene.world().createEntity(level -> PonderAux.spawnPlayer(scene, level, fox.getCenter().add(0, -0.5, 0), -90));
@@ -104,7 +104,7 @@ public class FoxHoundScene {
         scene.world().modifyEntity(player, Entity::discard);
         PonderAux.entityMove(hound, scene, 1, Direction.UP);
         jumpFox(hound, scene, Direction.WEST);
-        scene.world().modifyEntity(hound, entity -> ((Foxhound) entity).setInSittingPose(true));
+        scene.world().modifyEntity(hound, entity -> ((Foxhound) entity).setResting(true));
         scene.overlay().showText(60)
                 .text("quark_foxhound.text_6")
                 .attachKeyFrame()

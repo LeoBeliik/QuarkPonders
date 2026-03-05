@@ -23,40 +23,39 @@ public class EnhancedLadderScene {
         scene.idle(20);
 
         //explain module
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_enhanced_ladders.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(starterLadder.getCenter().add(0, 0, 0.5));
-        scene.idle(100);
+        scene.idle(120);
         placeLadders(scene, starterLadder);
 
         //ladders can hang
-        scene.rotateCameraY(360);
-        scene.idle(10);
+        PonderAux.transition(scene);
         for (int i = 1; i < 4; i++) {
             BlockPos p = new BlockPos(starterLadder.getX(), starterLadder.getY() - i, starterLadder.getZ());
             scene.world().setBlock(p, Blocks.AIR.defaultBlockState(), false);
             scene.world().setBlock(p.south(), Blocks.AIR.defaultBlockState(), false);
         }
         scene.idle(20);
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_enhanced_ladders.text_2")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(starterLadder.getCenter().add(0, 0, 0.5));
-        scene.idle(100);
+        scene.idle(120);
 
         placeLadders(scene, starterLadder);
 
         //slide down
         scene.idle(20);
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_enhanced_ladders.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(2);
-        scene.idle(80);
+        scene.idle(100);
 
         var player = scene.world().createEntity(level -> PonderAux.spawnPlayer(scene, level, starterLadder.getCenter(), 180));
         for (int i = 0; i < 33; i++) {

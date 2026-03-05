@@ -64,8 +64,7 @@ public class PistonMoveTEScene {
         scene.idle(40);
 
         //some BE can break
-        scene.rotateCameraY(360);
-        scene.idle(5);
+        PonderAux.transition(scene);
         scene.world().setBlock(piston, Blocks.PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.WEST), false);
         scene.world().setBlock(piston.west().south(), Blocks.STONE.defaultBlockState(), false);
         scene.world().setBlock(piston.west(), Blocks.OAK_WALL_SIGN.defaultBlockState().setValue(WallSignBlock.FACING, Direction.NORTH), false);
@@ -89,8 +88,7 @@ public class PistonMoveTEScene {
         scene.idle(40);
 
         //what can't be moved
-        scene.rotateCameraY(360);
-        scene.idle(5);
+        PonderAux.transition(scene);
         scene.world().modifyEntity(sign, Entity::discard);
         scene.world().setBlock(piston.west().south(), Blocks.AIR.defaultBlockState(), false);
         scene.world().setBlock(piston.west(), PonderAux.getBlock("sturdy_stone").defaultBlockState(), false);

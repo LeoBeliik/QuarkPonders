@@ -30,12 +30,12 @@ public class ChainScene {
         scene.idle(25);
 
         //show chain connection description
-        scene.overlay().showText(50)
+        scene.overlay().showText(100)
                 .text("minecraft_chain.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(util.vector().topOf(2, 1, 2));
-        scene.idle(80);
+        scene.idle(120);
         //click lever
         Vec3 falseSelection = util.vector().blockSurface(leverPos, Direction.DOWN);
         scene.overlay().showControls(falseSelection, Pointing.UP, 25).rightClick();
@@ -46,24 +46,24 @@ public class ChainScene {
         scene.world().moveSection(chains, util.vector().of(1, 0, 0), 1);
         scene.world().setBlock(piston.east(), Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.FACING, Direction.EAST), false);
         scene.world().setBlock(piston.east().east(), Blocks.OAK_WOOD.defaultBlockState(), false);
-        scene.overlay().showText(75)
+        scene.overlay().showText(80)
                 .pointAt(util.vector().topOf(piston))
                 .placeNearTarget()
                 .attachKeyFrame()
                 .text("minecraft_chain.text_2")
                 .pointAt(util.vector().topOf(3, 1, 3));
-        scene.idle(90);
+        scene.idle(100);
 
         //chains are directional description
         scene.world().setBlock(util.grid().at(3, 2, 2), Blocks.OAK_WOOD.defaultBlockState(), false);
         scene.world().showIndependentSection(util.select().fromTo(0, 2, 0, 5, 2, 5), Direction.DOWN);
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .pointAt(util.vector().topOf(piston))
                 .placeNearTarget()
                 .attachKeyFrame()
                 .text("minecraft_chain.text_3")
                 .pointAt(util.vector().topOf(3, 2, 2));
-        scene.idle(80);
+        scene.idle(100);
         //click lever again
         scene.overlay().showControls(falseSelection, Pointing.UP, 25).rightClick();
         scene.world().toggleRedstonePower(util.select().fromTo(leverPos, leverPos.east()));

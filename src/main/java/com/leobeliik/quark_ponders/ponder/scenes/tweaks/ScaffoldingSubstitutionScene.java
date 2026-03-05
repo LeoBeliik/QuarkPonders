@@ -18,12 +18,12 @@ public class ScaffoldingSubstitutionScene {
         scene.idle(20);
 
         //explain module
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_scaffolding_substitution.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(3);
-        scene.idle(100);
+        scene.idle(120);
 
         scene.overlay().showControls(centerScaff.getCenter(), Pointing.DOWN, 20).withItem(Items.OAK_PLANKS.getDefaultInstance());
         scene.idle(5);
@@ -34,12 +34,12 @@ public class ScaffoldingSubstitutionScene {
         scene.world().setBlock(util.grid().at(3, 4, 3), Blocks.OAK_PLANKS.defaultBlockState(), false);
         scene.idle(40);
 
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_scaffolding_substitution.text_2")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(3);
-        scene.idle(100);
+        scene.idle(120);
 
         scene.overlay().showControls(centerScaff.getCenter(), Pointing.DOWN, 20).withItem(Items.OAK_PLANKS.getDefaultInstance());
         scene.idle(5);
@@ -50,12 +50,12 @@ public class ScaffoldingSubstitutionScene {
         scene.world().setBlock(util.grid().at(1, 4, 3), Blocks.OAK_PLANKS.defaultBlockState(), false);
         scene.idle(40);
 
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_scaffolding_substitution.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(3);
-        scene.idle(100);
+        scene.idle(120);
         scene.overlay().showControls(centerScaff.getCenter(), Pointing.DOWN, 20).whileSneaking().withItem(Items.DARK_OAK_PLANKS.getDefaultInstance());
         scene.idle(5);
         scene.world().setBlock(util.grid().at(2, 1, 2), Blocks.DARK_OAK_PLANKS.defaultBlockState(), false);

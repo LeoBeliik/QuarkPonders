@@ -28,19 +28,20 @@ public class SkullPikeScenes {
         scene.idle(20);
 
         //explain spikes
-        scene.overlay().showText(60)
+        //TODO use some examples of the tag instead of harcoding what heads you can use!
+        scene.overlay().showText(100)
                 .text("quark_skull_spike.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(spike.getCenter().add(0, 0.25, 0));
-        scene.idle(80);
+        scene.idle(120);
 
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_skull_spike.text_2", SkullPikesModule.pikeRange)
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(2);
-        scene.idle(80);
+        scene.idle(100);
 
         var mob = scene.world().createEntity(level -> PonderAux.newEntity(EntityType.CREEPER, level, new Vec3(2.5, 1, 2.5), 270));
         scene.idle(30);
@@ -61,12 +62,13 @@ public class SkullPikeScenes {
         mob = scene.world().createEntity(level -> PonderAux.newEntity(EntityType.CREEPER, level, new Vec3(2.5, 1, 2.5), 270));
         scene.world().setBlock(spike.above(), Blocks.WITHER_SKELETON_SKULL.defaultBlockState().setValue(SkullBlock.ROTATION, 12), true);
 
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_skull_spike.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(spike.getCenter().add(0, 0.25, 0));
-        scene.idle(80);
+        scene.idle(100);
+
         scene.world().setBlock(spike.above(), Blocks.DRAGON_HEAD.defaultBlockState().setValue(SkullBlock.ROTATION, 12), true);
         scene.idle(40);
         scene.world().setBlock(spike.above(), Blocks.ZOMBIE_HEAD.defaultBlockState().setValue(SkullBlock.ROTATION, 12), true);
@@ -86,12 +88,12 @@ public class SkullPikeScenes {
         scene.idle(40);
 
         //no boss, no raid only mobs
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_skull_spike.text_4")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(2);
-        scene.idle(80);
+        scene.idle(100);
 
         mob = scene.world().createEntity(level -> PonderAux.newEntity(EntityType.PILLAGER, level, new Vec3(2.5, 1, 2.5), 270));
         scene.idle(40);
@@ -102,12 +104,12 @@ public class SkullPikeScenes {
         scene.idle(40);
 
         //mobs focus on player
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_skull_spike.text_5")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(2);
-        scene.idle(80);
+        scene.idle(100);
 
         mob = scene.world().createEntity(level -> PonderAux.spawnPlayer(scene, level, spike.west().getCenter().add(0, -0.5, 0), 90));
         scene.idle(10);

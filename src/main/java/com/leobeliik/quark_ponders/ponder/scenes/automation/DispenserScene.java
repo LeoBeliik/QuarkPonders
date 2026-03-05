@@ -22,12 +22,12 @@ public class DispenserScene {
         PonderAux.setAgentScene(scene, util, "minecraft_dispenser");
 
         //Explain dispenser
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_ender_watcher.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(dispenser.getCenter());
-        scene.idle(60);
+        scene.idle(80);
 
         //use the dispenser to place block
         scene.overlay().showControls(util.vector().topOf(button), Pointing.DOWN, 20).rightClick();
@@ -52,31 +52,31 @@ public class DispenserScene {
         scene.world().setBlock(dispenser.west(), Blocks.OAK_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.EAST), true);
         scene.idle(20);
         scene.world().toggleRedstonePower(util.select().fromTo(button, button.below()));
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("minecraft_dispenser.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(dispenser.west().getCenter());
-        scene.idle(60);
+        scene.idle(80);
         scene.world().setBlock(dispenser.west(), Blocks.AIR.defaultBlockState(), true);
         scene.idle(30);
 
         //Use the dispenser to plant
-        scene.rotateCameraY(360);
-        scene.idle(5);
+        PonderAux.transition(scene);
         scene.world().setBlock(dispenser.west().below(), Blocks.FARMLAND.defaultBlockState().setValue(FarmBlock.MOISTURE, 5), false);
-        scene.overlay().showText(40)
+        scene.idle(30);
+        scene.overlay().showText(60)
                 .text("minecraft_dispenser.text_4")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(dispenser.getCenter());
-        scene.idle(60);
+        scene.idle(80);
 
         scene.overlay().showControls(util.vector().topOf(button), Pointing.DOWN, 20).rightClick();
         scene.idle(5);
         scene.world().toggleRedstonePower(util.select().fromTo(button, button.below()));
         scene.world().setBlock(dispenser.west(), Blocks.POTATOES.defaultBlockState().setValue(PotatoBlock.AGE, 0), true);
-        scene.idle(20);
+        scene.idle(30);
         scene.world().toggleRedstonePower(util.select().fromTo(button, button.below()));
         scene.markAsFinished();
     }

@@ -11,6 +11,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.piston.PistonHeadBlock;
+import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraft.world.phys.Vec3;
 import org.violetmoon.quark.content.automation.block.IronRodBlock;
 
@@ -43,7 +44,7 @@ public class IronRodScene {
         PonderAux.clickLampButton(scene, util, button, button.east(), true, true);
         scene.idle(5);
         scene.world().modifyBlock(piston, state -> state.setValue(PistonBaseBlock.EXTENDED, true), false);
-        scene.world().setBlock(piston.west(), Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.FACING, Direction.WEST), false);
+        scene.world().setBlock(piston.west(), Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.FACING, Direction.WEST).setValue(PistonHeadBlock.TYPE, PistonType.STICKY), false);
         scene.world().setBlock(ironRod.west(), PonderAux.getBlock("iron_rod").defaultBlockState().setValue(IronRodBlock.FACING, Direction.WEST), true);
         var stone = scene.world().createItemEntity(ironRod.west().getCenter(), new Vec3(0, -0.2, 0), Items.COBBLESTONE.getDefaultInstance());
         scene.idle(20);

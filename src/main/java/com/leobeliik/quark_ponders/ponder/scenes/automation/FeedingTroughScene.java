@@ -12,7 +12,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.animal.Cow;
+import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
@@ -29,106 +29,103 @@ public class FeedingTroughScene {
         PonderAux.setAgentScene(scene, util, "quark_feeding_trough");
 
         //explain the feeding trough
-        scene.overlay().showText(40)
-                .text("quark_feeding_trough.text_1")
-                .attachKeyFrame()
-                .placeNearTarget()
-                .pointAt(ft.getCenter());
-        scene.idle(60);
-
         scene.overlay().showText(60)
-                .text("quark_feeding_trough.text_2", FeedingTroughModule.range)
+                .text("quark_feeding_trough.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(ft.getCenter());
         scene.idle(80);
 
+        scene.overlay().showText(100)
+                .text("quark_feeding_trough.text_2", FeedingTroughModule.range)
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(ft.getCenter());
+        scene.idle(100);
+
         //show the animals breeding
         List<ElementLink<EntityElement>> animals = new ArrayList<>();
-        cowGen(animals, scene);
+        pigGen(animals, scene);
 
         scene.idle(20);
-        scene.overlay().showControls(ft.getCenter(), Pointing.DOWN, 20).withItem(Items.WHEAT.getDefaultInstance());
+        scene.overlay().showControls(ft.getCenter(), Pointing.DOWN, 20).withItem(Items.CARROT.getDefaultInstance());
         scene.world().modifyBlock(ft, (s -> s.setValue(FeedingTroughBlock.FULL, true)), false);
         scene.idle(30);
-        moveCows(animals, scene);
-        cowBreed(animals, scene, util, ft);
+        movepigs(animals, scene);
+        pigBreed(animals, scene, util, ft);
         scene.idle(30);
-        scene.rotateCameraY(360);
-        scene.setSceneOffsetY(0);
-        scene.idle(20);
         scene.effects().emitParticles(ft.east().getCenter(), scene.effects().particleEmitterWithinBlockSpace(new DustParticleOptions(new Vector3f(0), 1), Vec3.ZERO), 150, 1);
         scene.effects().emitParticles(ft.west().getCenter(), scene.effects().particleEmitterWithinBlockSpace(new DustParticleOptions(new Vector3f(0), 1), Vec3.ZERO), 150, 1);
         scene.effects().emitParticles(ft.above().getCenter(), scene.effects().particleEmitterWithinBlockSpace(new DustParticleOptions(new Vector3f(0), 1), Vec3.ZERO), 150, 1);
         scene.world().modifyBlock(ft, (s -> s.setValue(FeedingTroughBlock.FULL, false)), false);
         scene.idle(5);
         for (ElementLink<EntityElement> entity : animals) {
-            scene.world().modifyEntity(entity, cow -> {
-                cow.setInvisible(true);
-                cow.kill();
+            scene.world().modifyEntity(entity, pig -> {
+                pig.setInvisible(true);
+                pig.kill();
             });
         }
         animals.clear();
         scene.idle(45);
 
-        cowGen(animals, scene);
+        pigGen(animals, scene);
         //Mobs eat but not always breed
-        scene.overlay().showText(60)
+        scene.overlay().showText(90)
                 .text("quark_feeding_trough.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(ft.getCenter());
-        scene.idle(80);
-        scene.overlay().showControls(ft.getCenter(), Pointing.DOWN, 20).withItem(Items.WHEAT.getDefaultInstance());
+        scene.idle(100);
+        scene.overlay().showControls(ft.getCenter(), Pointing.DOWN, 20).withItem(Items.POTATO.getDefaultInstance());
         scene.idle(20);
         scene.world().modifyBlock(ft, (s -> s.setValue(FeedingTroughBlock.FULL, true)), false);
         scene.idle(30);
-        moveCows(animals, scene);
+        movepigs(animals, scene);
         scene.idle(10);
-        cowEating(animals, scene, 5);
+        pigEating(animals, scene, 5);
         scene.world().modifyBlock(ft, (s -> s.setValue(FeedingTroughBlock.FULL, false)), false);
         scene.idle(20);
-        scene.overlay().showControls(ft.getCenter(), Pointing.UP, 20).withItem(Items.WHEAT.getDefaultInstance());
+        scene.overlay().showControls(ft.getCenter(), Pointing.UP, 20).withItem(Items.BEETROOT.getDefaultInstance());
         scene.world().modifyBlock(ft, (s -> s.setValue(FeedingTroughBlock.FULL, true)), false);
         scene.idle(20);
-        cowBreed(animals, scene, util, ft);
+        pigBreed(animals, scene, util, ft);
 
         //Mobs wont breed if there's many
-        scene.overlay().showText(80)
+        scene.overlay().showText(110)
                 .text("quark_feeding_trough.text_4", FeedingTroughModule.maxAnimals, FeedingTroughModule.range)
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(ft.getCenter());
-        scene.idle(100);
+        scene.idle(130);
         scene.markAsFinished();
     }
 
-    private static void cowBreed(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene, SceneBuildingUtil util, BlockPos pos) {
-        cowEating(animals, scene, 1);
-        scene.effects().emitParticles(pos.above().getCenter(), scene.effects().simpleParticleEmitter(ParticleTypes.HEART, util.vector().of(0, 0, 0)), 3, 5);
+    private static void pigBreed(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene, SceneBuildingUtil util, BlockPos pos) {
+        pigEating(animals, scene, 1);
+        scene.effects().emitParticles(pos.above().getCenter(), scene.effects().simpleParticleEmitter(ParticleTypes.HEART, Vec3.ZERO), 3, 5);
         scene.idle(15);
         animals.add(scene.world().createEntity(l -> {
-            Cow cow = (Cow) PonderAux.newEntity(EntityType.COW, l, new Vec3(2.5, 1.75, 2.5), 90);
-            cow.setBaby(true);
-            return cow;
+            Pig pig = (Pig) PonderAux.newEntity(EntityType.PIG, l, new Vec3(2.5, 1.75, 2.5), 90);
+            pig.setBaby(true);
+            return pig;
         }));
     }
 
-    private static void cowEating(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene, int munch) {
+    private static void pigEating(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene, int munch) {
         for (int i = 0; i <= munch; i++) {
             for (ElementLink<EntityElement> animal : animals) {
                 int finalI = i;
-                scene.world().modifyEntity(animal, cow -> cow.setXRot(finalI % 2 == 0 ? 45 : 0));
+                scene.world().modifyEntity(animal, pig -> pig.setXRot(finalI % 2 == 0 ? 45 : 0));
                 scene.idle(2);
             }
         }
     }
 
-    private static void moveCows(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene) {
+    private static void movepigs(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene) {
         for (int i = 0; i < 10; i++) {
             scene.idle(1);
-            scene.world().modifyEntity(animals.get(0), cow -> cow.move(MoverType.SELF, new Vec3(0.2, 0, 0)));
-            scene.world().modifyEntity(animals.get(1), cow -> cow.move(MoverType.SELF, new Vec3(-0.2, 0, 0)));
+            scene.world().modifyEntity(animals.get(0), pig -> pig.move(MoverType.SELF, new Vec3(0.2, 0, 0)));
+            scene.world().modifyEntity(animals.get(1), pig -> pig.move(MoverType.SELF, new Vec3(-0.2, 0, 0)));
         }
         for (ElementLink<EntityElement> entity : animals) {
             scene.world().modifyEntity(entity, e -> {
@@ -138,8 +135,8 @@ public class FeedingTroughScene {
         }
     }
 
-    private static void cowGen(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene) {
-        animals.add(scene.world().createEntity(l -> PonderAux.newEntity(EntityType.COW, l, new Vec3(0, 1, 2.5), -90)));
-        animals.add(scene.world().createEntity(l -> PonderAux.newEntity(EntityType.COW, l, new Vec3(5, 1, 2.5), 90)));
+    private static void pigGen(List<ElementLink<EntityElement>> animals, PonderSceneBuilder scene) {
+        animals.add(scene.world().createEntity(l -> PonderAux.newEntity(EntityType.PIG, l, new Vec3(0, 1, 2.5), -90)));
+        animals.add(scene.world().createEntity(l -> PonderAux.newEntity(EntityType.PIG, l, new Vec3(5, 1, 2.5), 90)));
     }
 }

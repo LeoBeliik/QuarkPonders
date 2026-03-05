@@ -8,6 +8,7 @@ import com.leobeliik.quark_ponders.ponder.scenes.building.RopeScene;
 import com.leobeliik.quark_ponders.ponder.scenes.building.StoolScene;
 import com.leobeliik.quark_ponders.ponder.scenes.mobs.FoxHoundScene;
 import com.leobeliik.quark_ponders.ponder.scenes.mobs.ToretoiseScene;
+import com.leobeliik.quark_ponders.ponder.scenes.oddities.InfluenceScene;
 import com.leobeliik.quark_ponders.ponder.scenes.oddities.MagnetScene;
 import com.leobeliik.quark_ponders.ponder.scenes.oddities.PipeScene;
 import com.leobeliik.quark_ponders.ponder.scenes.tools.SkullPikeScenes;
@@ -18,6 +19,7 @@ import net.createmod.ponder.api.scene.PonderStoryBoard;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.violetmoon.quark.addons.oddities.module.MagnetsModule;
+import org.violetmoon.quark.addons.oddities.module.MatrixEnchantingModule;
 import org.violetmoon.quark.addons.oddities.module.PipesModule;
 import org.violetmoon.quark.content.automation.module.*;
 import org.violetmoon.quark.content.building.module.GlassItemFrameModule;
@@ -82,7 +84,8 @@ interface ModuleRegistry {
 
     static List<RegisterScenes.ModuleSceneInfo> odditiesModules = List.of(
             new RegisterScenes.ModuleSceneInfo(PipesModule.class, toRL(Config.pipes_module), "oddities/pipe", PipeScene::Working),
-            new RegisterScenes.ModuleSceneInfo(MagnetsModule.class, toRL(Config.magnet_module), "oddities/magnet", MagnetScene::Working)
+            new RegisterScenes.ModuleSceneInfo(MagnetsModule.class, toRL(Config.magnet_module), "oddities/magnet", MagnetScene::Working),
+            new RegisterScenes.ModuleSceneInfo(MatrixEnchantingModule.class, toRL(Config.matrix_module), "oddities/matrix", InfluenceScene::Working)
     );
 
 }

@@ -21,12 +21,12 @@ public class SlimesToMagmaCubesScene {
         scene.idle(10);
 
         //explain module
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_slimes_to_magma_cubes.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(3);
-        scene.idle(90);
+        scene.idle(110);
 
         var entity = scene.world().createEntity(level -> {
             Slime slime = (Slime) PonderAux.newEntity(EntityType.SLIME, level, util.vector().topOf(1, 1, 1), 90);

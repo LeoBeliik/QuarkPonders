@@ -37,16 +37,17 @@ public class IronGrateScene {
         scene.world().modifyEntity(item, Entity::discard);
         scene.idle(20);
         BlockPos finalGrate = grate;
-        var mob = scene.world().createEntity(level -> {
-            var z = PonderAux.newEntity(EntityType.ZOMBIE, level, finalGrate.getCenter().add(0, 0.5, 0), 180);
-            z.setDeltaMovement(0, -1, 0);
-            return z;
-        });
+        var mob = scene.world().createEntity(level ->
+                PonderAux.newEntity(EntityType.ZOMBIE, level, finalGrate.getCenter().add(0, 3, 0), 180));
+        scene.idle(10);
+        scene.world().modifyEntity(mob, z -> z.move(MoverType.SELF, new Vec3(0, -3, 0)));
         scene.idle(40);
 
         //farm mobs won't walk on them
-        scene.rotateCameraY(360);
-        scene.idle(15);
+        PonderAux.setSmoke(scene, grate);
+        PonderAux.setSmoke(scene, grate.above());
+        PonderAux.setSmoke(scene, grate.above().above());
+        PonderAux.transition(scene);
         scene.world().modifyEntity(mob, Entity::discard);
         scene.world().setBlock(grate, Blocks.AIR.defaultBlockState(), false);
         for (int z = 0; z < 5; z++) {
@@ -88,8 +89,7 @@ public class IronGrateScene {
                 .placeNearTarget();
         scene.idle(60);
 
-        scene.rotateCameraY(360);
-        scene.idle(15);
+        PonderAux.transition(scene);
         for (int z = 0; z < 5; z++) {
             if (z == 2) continue;
             if (z % 2 == 0)

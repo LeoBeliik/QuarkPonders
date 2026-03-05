@@ -33,12 +33,12 @@ public class PipeScene {
         scene.idle(10);
 
         //explain module
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_pipe.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(3);
-        scene.idle(80);
+        scene.idle(100);
 
         scene.overlay().showText(80)
                 .text("quark_pipe.text_2")
@@ -56,12 +56,13 @@ public class PipeScene {
         PonderAux.entityMove(item, scene, 2, Direction.SOUTH);
 
         //intersection
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_pipe.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(hopper.getCenter().add(0, 0, 2.25));
-        scene.idle(60);
+        scene.idle(80);
+
         PonderAux.entityMove(item, scene, 2, Direction.SOUTH);
         scene.world().modifyEntity(item, entity -> {
             entity.move(MoverType.SELF, new Vec3(0, 0, 0.25));
@@ -69,24 +70,24 @@ public class PipeScene {
             entity.zo = entity.position().z;
         });
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_pipe.text_4")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(intersection.getCenter().add(0, 0, 0.25));
-        scene.idle(60);
+        scene.idle(80);
 
         PonderAux.entityMove(item, scene, 2, new Random().nextInt() % 2 == 0 ? Direction.WEST : Direction.EAST);
         scene.idle(40);
         scene.world().modifyEntity(item, Entity::discard);
 
         //redstone
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_pipe.text_5")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(40);
-        scene.idle(80);
+        scene.idle(100);
 
         scene.world().setBlock(util.grid().at(1, 0, 4), Blocks.REDSTONE_BLOCK.defaultBlockState(), true);
         scene.effects().emitParticles(util.grid().at(1, 1, 4).getCenter(), scene.effects()
@@ -106,26 +107,25 @@ public class PipeScene {
         scene.idle(5);
         PonderAux.entityMove(item, scene, 4, Direction.SOUTH);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_pipe.text_6")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(intersection.getCenter());
-        scene.idle(60);
+        scene.idle(80);
 
         PonderAux.entityMove(item, scene, 2, Direction.UP);
         scene.world().modifyEntity(item, Entity::discard);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_pipe.text_7")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(5);
-        scene.idle(60);
+        scene.idle(80);
 
         //in and out
-        scene.rotateCameraY(360);
-        scene.idle(15);
+        PonderAux.transition(scene);
         scene.world().setBlock(hopper.south(), Blocks.AIR.defaultBlockState(), false);
         scene.world().setBlock(intersection, Blocks.AIR.defaultBlockState(), false);
         scene.world().setBlock(intersection.north(), Blocks.AIR.defaultBlockState(), false);
@@ -149,12 +149,12 @@ public class PipeScene {
         scene.world().setBlock(util.grid().at(2, 2, 2), PonderAux.getBlock("pipe").defaultBlockState().setValue(PipeBlock.DOWN, true), false);
         scene.idle(40);
 
-        scene.overlay().showText(40)
+        scene.overlay().showText(60)
                 .text("quark_pipe.text_8")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(5);
-        scene.idle(60);
+        scene.idle(80);
 
         item = scene.world().createEntity(level ->
                 PonderAux.staticItem(level, util.grid().at(2, 3, 0).getCenter().add(0.25, 0.55, 0.25), 90, stone));
@@ -182,12 +182,12 @@ public class PipeScene {
         PonderAux.entityMove(item, scene, 2, Direction.SOUTH);
         scene.world().modifyBlock(util.grid().at(1, 1, 2), state -> state.setValue(ComparatorBlock.POWERED, true), false);
         scene.world().modifyBlock(util.grid().at(0, 1, 2), state -> state.setValue(RedstoneLampBlock.LIT, true), false);
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_pipe.text_9")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(util.grid().at(1, 1, 2).getCenter());
-        scene.idle(80);
+        scene.idle(100);
         scene.world().modifyBlock(util.grid().at(1, 1, 2), state -> state.setValue(ComparatorBlock.POWERED, false), false);
         scene.world().modifyBlock(util.grid().at(0, 1, 2), state -> state.setValue(RedstoneLampBlock.LIT, false), false);
         PonderAux.entityMove(item, scene, 3, Direction.UP);
@@ -195,12 +195,12 @@ public class PipeScene {
 
         //TMI
         scene.idle(20);
-        scene.overlay().showText(80)
+        scene.overlay().showText(100)
                 .text("quark_pipe.text_10", PipesModule.maxPipeItems)
                 .attachKeyFrame()
                 .placeNearTarget()
                 .independent(5);
-        scene.idle(100);
+        scene.idle(120);
 
         //glass
         scene.idle(30);
@@ -208,7 +208,7 @@ public class PipeScene {
         scene.idle(5);
         scene.world().setBlock(hopper.south(), PonderAux.getBlock("encased_pipe").defaultBlockState().setValue(PipeBlock.SOUTH, true).setValue(PipeBlock.NORTH, true), false);
         scene.idle(20);
-        scene.overlay().showText(60)
+        scene.overlay().showText(80)
                 .text("quark_pipe.text_11")
                 .attachKeyFrame()
                 .placeNearTarget()

@@ -12,17 +12,24 @@ import org.violetmoon.quark.content.automation.block.RedstoneRandomizerBlock;
 public class RedstoneRandomizerScene {
     public static void Working(SceneBuilder builder, SceneBuildingUtil util) {
         PonderSceneBuilder scene = new PonderSceneBuilder(builder.getScene());
+        scene.rotateCameraY(25);
         BlockPos randomizer = util.grid().at(2, 1, 2);
         BlockPos mainLamp = randomizer.south();
         BlockPos button = mainLamp.above();
         BlockPos eastLamp = randomizer.east();
         BlockPos westLamp = randomizer.west();
-        scene.rotateCameraY(25);
 
         PonderAux.setAgentScene(scene, util, "quark_redstone_randomizer");
 
         scene.overlay().showText(60)
                 .text("quark_redstone_randomizer.text_1")
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(randomizer.getCenter().add(0.25, -0.5, 0.5));
+        scene.idle(80);
+
+        scene.overlay().showText(60)
+                .text("quark_redstone_randomizer.text_2")
                 .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(randomizer.getCenter().add(0.25, -0.5, 0.5));
@@ -43,7 +50,8 @@ public class RedstoneRandomizerScene {
             scene.world().modifyBlock(randomizer, state -> state.setValue(RedstoneRandomizerBlock.POWERED, RandomizerPowerState.OFF), false);
             scene.world().modifyBlock(randomizer.east(), state -> state.setValue(RedstoneLampBlock.LIT, false), false);
             scene.world().modifyBlock(randomizer.west(), state -> state.setValue(RedstoneLampBlock.LIT, false), false);
-            scene.idle(25);
+            scene.idle(20);
         }
+        scene.markAsFinished();
     }
 }
