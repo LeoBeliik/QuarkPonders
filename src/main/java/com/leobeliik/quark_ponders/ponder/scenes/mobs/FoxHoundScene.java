@@ -100,8 +100,10 @@ public class FoxHoundScene {
                 .independent(10);
         scene.idle(60);
 
+        scene.world().setBlock(fox, Blocks.AIR.defaultBlockState(), false);
         scene.world().setBlock(util.grid().at(2, 1, 2), Blocks.FURNACE.defaultBlockState().setValue(FurnaceBlock.FACING, Direction.NORTH).setValue(FurnaceBlock.LIT, true), false);
         scene.world().modifyEntity(player, Entity::discard);
+
         PonderAux.entityMove(hound, scene, 1, Direction.UP);
         jumpFox(hound, scene, Direction.WEST);
         scene.world().modifyEntity(hound, entity -> ((Foxhound) entity).setResting(true));

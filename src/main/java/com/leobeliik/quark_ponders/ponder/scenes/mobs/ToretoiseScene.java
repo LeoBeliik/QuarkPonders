@@ -12,12 +12,15 @@ import net.createmod.ponder.foundation.PonderSceneBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.vehicle.Minecart;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RailBlock;
@@ -34,8 +37,6 @@ import org.violetmoon.quark.content.automation.module.FeedingTroughModule;
 import org.violetmoon.quark.content.automation.module.IronRodModule;
 import org.violetmoon.quark.content.mobs.entity.Toretoise;
 import org.violetmoon.quark.content.mobs.module.ToretoiseModule;
-import org.violetmoon.zeta.module.ZetaModuleManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,39 +56,65 @@ public class ToretoiseScene {
                 .text("quark_toretoise.text_1")
                 .attachKeyFrame()
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(100);
 
         scene.overlay().showText(80)
                 .text("quark_toretoise.text_2")
                 .attachKeyFrame()
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(100);
 
-        scene.overlay().showText(60)
+        scene.overlay().showText(150)
                 .text("quark_toretoise.text_3")
                 .attachKeyFrame()
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(80);
 
         scene.overlay().showControls(toretoise.getCenter(), Pointing.UP, 20).withItem(Items.WOODEN_PICKAXE.getDefaultInstance());
+        scene.idle(10);
+        scene.world().modifyEntity(tot, Entity::discard);
+        tot = scene.world().createEntity(level -> createToretoise(level, toretoise, 0));
+        var item = scene.world().createItemEntity(toretoise.getCenter(), new Vec3(-0.01, 0.4, -0.2), Items.RAW_IRON.getDefaultInstance());
+
+        scene.overlay().showText(60)
+                .text("quark_toretoise.text_4")
+                .placeNearTarget()
+                .independent(130);
+        scene.idle(80);
+        scene.world().modifyEntity(item, Entity::discard);
+        scene.world().modifyEntity(tot, Entity::discard);
+        tot = scene.world().createEntity(level -> createToretoise(level, toretoise, 2));
+
+        //silk touch
+        scene.overlay().showText(70)
+                .text("quark_toretoise.text_5")
+                .attachKeyFrame()
+                .placeNearTarget()
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
+        scene.idle(60);
+
+        ItemStack silk_pick = Items.WOODEN_PICKAXE.getDefaultInstance();
+        silk_pick.enchant(scene.getScene().getWorld().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 5);
+
+        scene.overlay().showControls(toretoise.getCenter(), Pointing.UP, 20).withItem(silk_pick);
         scene.idle(5);
         scene.world().modifyEntity(tot, Entity::discard);
         tot = scene.world().createEntity(level -> createToretoise(level, toretoise, 0));
-        var item = scene.world().createItemEntity(toretoise.getCenter(), new Vec3(0, 0.5, 0), Items.RAW_IRON.getDefaultInstance());
+        item = scene.world().createItemEntity(toretoise.getCenter(), new Vec3(-0.01, 0.4, -0.2), Items.DEEPSLATE_IRON_ORE.getDefaultInstance());
         scene.idle(40);
         scene.world().modifyEntity(item, Entity::discard);
 
         //aoe attack
         scene.overlay().showText(80)
-                .text("quark_toretoise.text_4")
+                .text("quark_toretoise.text_6")
                 .attachKeyFrame()
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(100);
-        scene.overlay().showControls(toretoise.getCenter(), Pointing.DOWN, 20).withItem(Items.WOODEN_SWORD.getDefaultInstance());
+        scene.overlay().showControls(toretoise.getCenter().add(0, 0.5, 0), Pointing.DOWN, 20).withItem(Items.WOODEN_SWORD.getDefaultInstance());
         scene.idle(5);
         scene.world().modifyEntity(tot, entity -> {
             ((Toretoise) entity).angeryTicks = 20;
@@ -102,25 +129,25 @@ public class ToretoiseScene {
         }
         scene.idle(10);
         scene.overlay().showText(80)
-                .text("quark_toretoise.text_5")
+                .text("quark_toretoise.text_7")
                 .colored(PonderPalette.BLUE)
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(100);
 
         //transport
         scene.overlay().showText(80)
-                .text("quark_toretoise.text_6")
+                .text("quark_toretoise.text_8")
                 .colored(PonderPalette.GREEN)
                 .attachKeyFrame()
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(100);
 
         scene.overlay().showText(60)
-                .text("quark_toretoise.text_7")
+                .text("quark_toretoise.text_9")
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(80);
 
         scene.overlay().showControls(toretoise.getCenter(), Pointing.DOWN, 20).withItem(Items.LEAD.getDefaultInstance()).showing(PonderGuiTextures.ICON_DISABLE);
@@ -138,9 +165,9 @@ public class ToretoiseScene {
         scene.world().modifyEntity(boat, Entity::discard);
         scene.idle(20);
         scene.overlay().showText(40)
-                .text("quark_toretoise.text_8")
+                .text("quark_toretoise.text_10")
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(60);
 
         List<ElementLink<WorldSectionElement>> sections = new ArrayList<>();
@@ -184,10 +211,10 @@ public class ToretoiseScene {
         tot = scene.world().createEntity(level -> createToretoise(level, toretoise, 0));
         scene.idle(20);
         scene.overlay().showText(80)
-                .text("quark_toretoise.text_9")
+                .text("quark_toretoise.text_11")
                 .attachKeyFrame()
                 .placeNearTarget()
-                .pointAt(toretoise.getCenter());
+                .pointAt(toretoise.getCenter().add(-0.5, 0.5, 0));
         scene.idle(100);
 
         scene.overlay().showControls(toretoise.west().getCenter(), Pointing.DOWN, 20).withItem(Items.GLOW_BERRIES.getDefaultInstance());
@@ -195,7 +222,7 @@ public class ToretoiseScene {
         scene.idle(30);
 
         scene.overlay().showText(80)
-                .text("quark_toretoise.text_10")
+                .text("quark_toretoise.text_12")
                 .colored(PonderPalette.RED)
                 .placeNearTarget()
                 .independent(10);
@@ -212,7 +239,7 @@ public class ToretoiseScene {
 
         scene.idle(70);
         scene.overlay().showText(60)
-                .text("quark_toretoise.text_11")
+                .text("quark_toretoise.text_13")
                 .colored(PonderPalette.BLUE)
                 .placeNearTarget()
                 .independent(40);
@@ -223,7 +250,7 @@ public class ToretoiseScene {
         if (Quark.ZETA.modules.isEnabled(FeedingTroughModule.class)) {
             scene.world().setBlock(util.grid().at(0, 1, 2), PonderAux.getBlock("feeding_trough").defaultBlockState().setValue(FeedingTroughBlock.FULL, true), false);
             scene.overlay().showText(80)
-                    .text("quark_toretoise.text_12")
+                    .text("quark_toretoise.text_14")
                     .attachKeyFrame()
                     .placeNearTarget()
                     .pointAt(util.grid().at(0, 1, 2).getCenter());
@@ -231,14 +258,14 @@ public class ToretoiseScene {
             scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.AIR.defaultBlockState(), true);
         } else {
             scene.overlay().showText(10)
-                    .text("quark_toretoise.text_12")
+                    .text("quark_toretoise.text_14")
                     .independent(500);
             scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.AIR.defaultBlockState(), false);
         }
 
         scene.idle(20);
         scene.overlay().showText(80)
-                .text("quark_toretoise.text_13", ToretoiseModule.cooldownTicks / 20)
+                .text("quark_toretoise.text_16", ToretoiseModule.cooldownTicks / 20)
                 .colored(PonderPalette.BLUE)
                 .placeNearTarget()
                 .independent(40);
@@ -258,7 +285,7 @@ public class ToretoiseScene {
         scene.idle(50);
 
         scene.overlay().showText(80)
-                .text("quark_toretoise.text_14")
+                .text("quark_toretoise.text_17")
                 .placeNearTarget()
                 .attachKeyFrame()
                 .pointAt(toretoise.above().getCenter().add(0, -0.25, 0));
@@ -282,10 +309,10 @@ public class ToretoiseScene {
             scene.world().showIndependentSection(util.select().fromTo(0, 2, 0, 5, 5, 5), Direction.DOWN);
             scene.idle(40);
             scene.overlay().showText(80)
-                    .text("quark_toretoise.text_15")
+                    .text("quark_toretoise.text_18")
                     .placeNearTarget()
                     .attachKeyFrame()
-                    .pointAt(toretoise.above(2).getCenter());
+                    .pointAt(toretoise.above(2).getCenter().add(-0.5, 0.5, 0));
             scene.idle(100);
 
             scene.world().setBlock(toretoise.above(3), Blocks.STICKY_PISTON.defaultBlockState().setValue(PistonBaseBlock.FACING, Direction.DOWN)

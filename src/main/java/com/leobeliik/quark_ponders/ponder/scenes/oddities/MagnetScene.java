@@ -51,39 +51,37 @@ public class MagnetScene {
         PonderAux.clickLampButtonTop(scene, util, lever, true, true);
         scene.idle(5);
         scene.world().modifyBlock(magnet, state -> state.setValue(MagnetBlock.POWERED, true), false);
-        scene.world().setBlock(util.grid().at(2, 1, 0), Blocks.AIR.defaultBlockState(), false);
-        scene.world().setBlock(util.grid().at(2, 1, 1), Blocks.IRON_BLOCK.defaultBlockState(), false);
-        scene.world().setBlock(util.grid().at(2, 1, 3), Blocks.AIR.defaultBlockState(), false);
-        scene.world().setBlock(util.grid().at(2, 1, 4), Blocks.COPPER_BLOCK.defaultBlockState(), false);
+        scene.world().setBlock(util.grid().at(4, 1, 2), Blocks.AIR.defaultBlockState(), false);
+        scene.world().setBlock(util.grid().at(3, 1, 2), Blocks.IRON_BLOCK.defaultBlockState(), false);
+        scene.world().setBlock(util.grid().at(1, 1, 2), Blocks.AIR.defaultBlockState(), false);
+        scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.COPPER_BLOCK.defaultBlockState(), false);
         PonderAux.clickLampButtonTop(scene, util, lever, false, true);
         scene.idle(5);
         scene.world().modifyBlock(magnet, state -> state.setValue(MagnetBlock.POWERED, false), false);
         scene.idle(20);
 
         //and items
-        scene.world().setBlock(util.grid().at(2, 1, 1), Blocks.AIR.defaultBlockState(), true);
-        scene.world().setBlock(util.grid().at(2, 1, 4), Blocks.AIR.defaultBlockState(), true);
+        scene.world().setBlock(util.grid().at(3, 1, 2), Blocks.AIR.defaultBlockState(), true);
+        scene.world().setBlock(util.grid().at(0, 1, 2), Blocks.AIR.defaultBlockState(), true);
 
         scene.overlay().showText(80)
                 .text("quark_magnet.text_2")
-                .attachKeyFrame()
                 .placeNearTarget()
                 .pointAt(magnet.getCenter());
         scene.idle(100);
 
-        scene.world().createItemEntity(magnet.north().north().getCenter(), Vec3.ZERO, Items.COPPER_GRATE.getDefaultInstance());
-        scene.world().createItemEntity(magnet.south().getCenter(), Vec3.ZERO, Items.HOPPER.getDefaultInstance());
+        scene.world().createItemEntity(magnet.east(2).getCenter(), Vec3.ZERO, Items.COPPER_GRATE.getDefaultInstance());
+        scene.world().createItemEntity(magnet.west().getCenter(), Vec3.ZERO, Items.HOPPER.getDefaultInstance());
         scene.idle(40);
 
         PonderAux.clickLampButtonTop(scene, util, lever, true, true);
         scene.idle(3);
         scene.world().modifyBlock(magnet, state -> state.setValue(MagnetBlock.POWERED, true), false);
-        scene.world().modifyEntities(ItemEntity.class, itemEntity -> itemEntity.addDeltaMovement(new Vec3(0, 0, 0.45)));
+        scene.world().modifyEntities(ItemEntity.class, itemEntity -> itemEntity.addDeltaMovement(new Vec3(-0.45, 0, 0)));
         scene.idle(20);
         PonderAux.clickLampButtonTop(scene, util, lever, false, true);
         scene.idle(3);
         scene.world().modifyBlock(magnet, state -> state.setValue(MagnetBlock.POWERED, false), false);
-        scene.idle(40);
         scene.world().modifyEntities(ItemEntity.class, Entity::discard);
 
         //red push, blue pulls
@@ -92,6 +90,7 @@ public class MagnetScene {
                 .text("quark_magnet.text_3")
                 .colored(PonderPalette.RED)
                 .placeNearTarget()
+                .attachKeyFrame()
                 .independent(50);
         scene.overlay().showText(60)
                 .text("quark_magnet.text_4")

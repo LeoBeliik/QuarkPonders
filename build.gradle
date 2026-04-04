@@ -116,6 +116,8 @@ repositories {
     maven { url = "https://maven.blamejared.com" }
     // registrate
     maven { url = "https://maven.tterrag.com" }
+    //for testing mods
+    maven { url = "https://api.modrinth.com/maven" }
 }
 
 dependencies {
