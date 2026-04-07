@@ -50,8 +50,11 @@ jobs:
         game-versions: ${{github.ref_name}}
         version: ${{env.MOD_VERSION}}-${{github.ref_name}}
         java: Java 21
-        modrinth-featured: false
+        modrinth-featured: true
+        modrinth-unfeature-mode: subset
         changelog-file: CHANGELOG.md
+        dependencies: |
+          Quark(required){modrinth:qnQsVE2z}{curseforge:243121}
           
     - name: Cleanup Gradle Cache
       run: ./gradlew --stop |
